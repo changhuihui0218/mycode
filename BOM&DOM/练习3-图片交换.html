@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+               margin: 0;
+               padding: 0;
+            }
+            .box{
+                width: 800px;
+                height: 500px;
+                position: fixed;
+                left: 50%;
+                margin-left: -400px;
+                /* margin-top: 10px; */
+            }
+            .box-top{
+                width: 800px;
+                height: 300px;
+            }
+            .ul{
+                margin: 2px;
+            }
+            .img-list{
+                width: 200px;
+                height: 200px;
+                float: left;
+                list-style: none;
+            }
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="box-top">
+                <img class="img-top" src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cc880682e314092bd56a4c2d6b044e83.jpg" alt="">
+            </div>
+            <div class="box-bottom">
+                <ul class="box-img">
+                    <li class="img-list">
+                        <img class="test-imag" src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cc880682e314092bd56a4c2d6b044e83.jpg" alt="">
+                    </li>
+                    <li class="img-list">
+                        <img class="test-imag" src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9f1365c7a7d0070c1f71f5d797cf11fe.jpg" alt="">
+                    </li>
+                    <li class="img-list">
+                        <img class="test-imag" src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/88c951d33781f19fe90f6fc20411378b.jpg" alt="">
+                    </li>
+                    <li class="img-list">
+                        <img class="test-imag"src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6ef43cf9f138a7fc3a39273d7e3d13b6.jpg" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <script>
+            var oImg = document.getElementsByClassName("test-imag");
+            var oShowImg = document.getElementsByClassName("img-top")[0];
+            for(var i=0;i<oImg.length;i++){
+                oImg[i].onmouseover =function(){
+                   var _src=this.getAttribute("src");
+                   oShowImg.setAttribute("src",_src);
+
+                }
+            }
+        </script>
+    </body>
+</html>

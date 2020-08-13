@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            div{
+                width: 100px;
+                height: 200px;
+                background-color: gray;
+                display: none;
+                position: fixed;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 出现的问题，1.要把html css js 分开来写，不能把所有的东西都放在js中
+                        2.定位问题！相对于浏览器，则position:fixed,然后在js中填写对应的top,left值；
+                        3.注意鼠标clientX,clientY是属性值，且无单位，复制给定位top时后面要拼接px;
+                        4.隐藏显示则用display来转换；display:none;或者：display:block;
+        -->
+        <div>
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </div>
+        <script>
+            var rootEL =document.documentElement;
+            var oDiv = document.getElementsByTagName("div")[0];
+            rootEL.oncontextmenu = function(event){
+                var x = event.clientX;
+                var y = event.clientY;
+                event.preventDefault();
+                oDiv.style.display="block";
+                oDiv.style.top=y+"px";
+                oDiv.style.left=x+"px";
+
+            }
+        </script>
+    </body>
+</html>

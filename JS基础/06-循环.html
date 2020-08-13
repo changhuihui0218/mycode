@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            /*
+                break，continue；是循环的;不是if的；
+                break;结束整个循环 ；可以写好多break;但只能执行一个；
+                continue;结束当前循环，进行下次循环；
+            
+            */
+            // 1.for循环   
+                   var array = [1,2,3,4,5,6];
+                   for(var i=0;i<array.length;i++){
+                       console.log(array[i]);
+                   }
+                  
+                  //字符串也可以作为数组一样，不报错，但不建议使用，应规范代码；
+                   var str ="hello";
+                   for(var i=0;i<str.length;i++){
+                       console.log(str[i]);
+                   }
+            // 2.while循环
+                    var array = [1,2,3,4,5,6];
+                    var i=0;
+                    while(i<array.length){
+                        console.log(array[i]);
+                        i++;
+                    }
+            // 3.do-while循环  循环至少执行一次（无论条件是否匹配）
+                    var array = [1,2,3,4,5,6];
+                    var i=0;
+                    do{
+                        console.log(array[i]);
+                        i++;
+                    }while(i<array.length);
+        </script>
+    </body>
+</html>

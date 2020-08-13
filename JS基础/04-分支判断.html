@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 1.if判断
+                1.正常比大小
+                2.判断是数值型的话：0为假，除了0都为真
+                3.判断是字符型的话：""（空字符串）是假，其余为真
+                4.undefined、null为假
+        */
+        var a = 10;
+        var b = 20;
+        if(a>b){
+            console.log("a大于b");
+        }else if(a<b){
+            console.log("a小于b");
+        }else{
+            console.log("a等于b");
+        }
+        // 数字
+        var a =10;
+        if(a){
+            console.log("a为真");
+        }else{
+            console.log("a为假");
+        }
+        var a =0;
+        if(a){
+            console.log("a为真");
+        }else{
+            console.log("a为假");
+        }
+        //字符串
+        var a ="hello";
+        if(a){
+            console.log("a为真");
+        }else{
+            console.log("a为假");
+        }
+        var a ="";
+        if(a){
+            console.log("a为真");
+        }else{
+            console.log("a为假");
+        }
+        //undefined、null
+        var a =undefined;
+        if(a){
+            console.log("a为真");
+        }else{
+            console.log("a为假");
+        }
+        var a =null;
+        if(a){
+            console.log("a为真");
+        }else{
+            console.log("a为假");
+        }
+        /*
+            2.==：会进行隐式类型转换，类型不同也可以
+              ===：严格匹配，会判断类型是否相同
+        */
+        var a = 10;
+        var b = 10;
+        if(a == b){
+            console.log("真");
+        }else{
+            console.log("假");
+        }
+        if(a === b){
+            console.log("真");
+        }else{
+            console.log("假");
+        }
+
+        var a = "10";
+        var b = 10;
+        if(a == b){
+            console.log("真");
+        }else{
+            console.log("假");
+        }
+
+        if(a === b){
+            console.log("真");
+        }else{
+            console.log("假");
+        }
+
+        var a = "abc";
+        var b = 10;
+        if(a === b){
+            console.log("真");
+        }else{
+            console.log("假");
+        }
+       /*
+         问题：a和b中有一个为零，另一个不为零，想要c等于不为零的值？
+            1.if-else赋值
+            2.三元运算符（？ ：）
+            3.||
+       */
+        var a = 10;
+        var b = 0;
+        if(a==0){
+            c=b;
+        }else{
+            c=a;
+        }
+        console.log(c);
+
+        var a = 10;
+        var b = 0;
+        c = a==0? b:a;
+        console.log(c);
+
+        var a = 10;
+        var b = 0;
+        c=a||b;
+        console.log(c);
+
+        /*
+          2.switch-case
+          case后面可以跟简单的逻辑表达式如3+7；或前面定义了一个变量var i=9; case:i+3;也是可以的
+          case后的值也switch（）的值是严格匹配，类型也要一样;
+        */
+        var a = 3;
+        switch(a){
+            case 1:console.log("1");break;
+            case 2: console.log("2");break;
+            case 3: console.log("3");break;
+            default:console.log("输入数值错误");
+        }
+    </script>
+</body>
+</html>

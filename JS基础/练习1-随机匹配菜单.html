@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 出现的问题：1.Math中的首字母得大写
+                        2.window.confirm的返回值为布尔类型；
+                          window.promote返回值是字符串；     
+        -->
+        <script>
+            function food(){
+                var foodNum=Math.floor((Math.random()*10));
+                switch(foodNum){
+                    case 0: return "酸辣土豆丝";break;
+                    case 1: return "麻辣拌";break;
+                    case 2: return "煮方便面";break;
+                    case 3: return "烤红薯";break;
+                    case 4: return "煮玉米";break;
+                    case 5: return "烤冷面";break;
+                    case 6: return "烧烤金针菇";break;
+                    case 7: return "炸鸡柳";break;
+                    case 8: return "馄饨";break;
+                    case 9: return "吃水果";break;
+                }
+            }
+          var IsGoOn=window.confirm("是否选择吃晚餐?");
+          var personName=[];
+          var personFood=[];
+          if(IsGoOn){
+             var num=parseInt(window.prompt("一共几个人？"));
+             for( var i=0; i<num;i++){
+                 personName[i]=window.prompt("第"+(i+1)+"个人叫什么名字？");
+             }
+             for( var j=0;j<num;j++){
+                personFood[j]=personName[j]+"吃"+food();
+             }
+             console.log(personFood);
+          }else{
+              alert("您已经取消订单！");
+          }
+        </script>
+    </body>
+</html>

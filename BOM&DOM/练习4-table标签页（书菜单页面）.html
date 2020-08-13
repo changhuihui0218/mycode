@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .box{
+                width: 500px;
+                position: fixed;
+                left: 50%;
+                margin-left: -250px;
+                margin-top:100px; 
+                border: 1px solid black;
+            }
+            .menu-box{
+                height: 50px;
+                background-color:black;
+                text-align: center;
+                line-height: 50px;
+                
+            }
+            .menu-box ul,.content-box ul{
+                list-style:none;
+
+            }
+            .menu-box li{
+                float: left;
+                color: #ffffff;
+                border-left: 10px solid black;
+                border-right: 10px solid black;
+            }
+            .menu-box .active{
+                background-color: gray;
+                color: black;
+                border-left: 10px solid  gray;
+                border-right: 10px solid  gray;
+            }
+            .content-box ul{
+                margin-top: 10px;
+                margin-left: 50px;
+            }
+            .content-list1{
+               margin: 20px;
+               display: none;
+            }
+            .content-list2{
+                margin: 20px;
+                display: none;
+            }
+            .content-list3{
+                margin: 20px;
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 问题：
+                 1.列表元素想改变背景颜色时，连整个周围都改变，可以改变自己的背景+border的背景
+                                                           也可以通过控制宽高来改变
+                 2.js中的代码太多太长了，比如li可以引入一个伪数组（通过控制索引值来实现），不用一个一个引入 ；
+                                        像一些简单的样式变换可以写在css选择器里，（.active）,然后jS控制类名来实现，
+                                        不用每回都用style.来改写  
+                 3.显示文字那块也可以通过ative来实现；
+        -->
+        <div class="box">
+            <div class="menu-box">
+                <ul>
+                    <li class="menu-list active">第一单元</li>
+                    <li class="menu-list">第二单元</li>
+                    <li class="menu-list">第三单元</li>
+                </ul>
+            </div>
+            <div class="content-box">
+                <div class="content-list1">
+                     <ul>
+                        <li >第一单元第一课</li>
+                        <li >第一单元第二课</li>
+                        <li >第一单元第三课</li>
+                     </ul>
+                </div>
+                <div class="content-list2">
+                    <ul>
+                       <li>第二单元第一课</li>
+                       <li>第二单元第二课</li>
+                       <li>第二单元第三课</li>
+                    </ul>
+               </div>
+               <div class="content-list3">
+                <ul>
+                   <li>第三单元第一课</li>
+                   <li>第三单元第二课</li>
+                   <li>第三单元第三课</li>
+                </ul>
+           </div>
+            </div>
+        </div>
+        <script>
+            var arrayLi =document.getElementsByClassName("menu-list");
+            var oConent1=document.getElementsByClassName("content-list1")[0];
+            var oConent2=document.getElementsByClassName("content-list2")[0];
+            var oConent3=document.getElementsByClassName("content-list3")[0];
+            // console.log(arrayLi); 
+            for(var i=0;i<arrayLi.length;i++){
+                arrayLi[i].index=i;
+                arrayLi[i].onmouseover = function(){
+                    for(var j=0;j<arrayLi.length;j++){  
+                    arrayLi[j].style.backgroundColor="black";
+                    arrayLi[j].style.color="white";
+                    arrayLi[j].style.borderLeftColor="black";
+                    arrayLi[j].style.borderRightColor="black";
+                    }
+                    this.style.backgroundColor="gray";
+                    this.style.color="black";
+                    this.style.borderLeftColor="gray";
+                    this.style.borderRightColor="gray";
+                    if(this.index==0){
+
+                        oConent1.style.display="block";
+                        oConent2.style.display="none";
+                        oConent3.style.display="none";
+                    }else if(this.index==1){
+                        oConent1.style.display="none";
+                        oConent2.style.display="block";
+                        oConent3.style.display="none";
+                    }else{
+                        oConent1.style.display="none";
+                        oConent2.style.display="none";
+                        oConent3.style.display="block";
+                    }
+
+                }
+            }
+
+        </script>
+    </body>
+</html> 

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            /*
+            注:在变量名这块是严格区分大小写的，进制这块0x,0X,0B,0b,大小写都可以表示；
+                1.进制的表示
+                    十进制：正常数字；
+                    二进制：以0b开头表示；
+                    八进制：以0o/o开头表示；o开头是老版本，一般使用0o; //大写小写没关系？
+                    十六进制：以0x开头表示；
+            */
+            console.log("*****************进制表示*******************");
+            var a = 10;
+            console.log(a);
+
+            var a = 0b101;
+            console.log(a);
+            var a = 0B101;
+            console.log(a);
+
+            var a = 0o10;
+            console.log(a);
+            var a = 0O10;
+            console.log(a);
+            var a = 010;
+            console.log(a);
+
+            var a = 0x10;
+            console.log(a);
+            var a = 0X10;
+            console.log(a);
+            /*
+                2.进制转换
+                  十进制转换为其他进制-------利用toString(1);
+                      变量名.toString();是将数字转换为字符串，但是可以带参数转换，参数对应要转换的进制；
+                      最终结果为字符型类型；
+                 其他进制转换为十进制：
+                   方法一：利用parseInt(1,2);
+                        参数1：要转换的变量名
+                        参数2：目标进制
+                   方法二：直接输出变量名
+                   方法三直接parseInt(变量名);
+
+            */
+            console.log("*****************进制转换*******************");
+            var a = 10;
+            console.log(a.toString());
+            console.log(a.toString("10"));
+            console.log(typeof(a.toString("10")));
+            console.log(a.toString("2"));
+            console.log(a.toString("8"));
+            console.log(a.toString("16"));
+
+            var a = 0x12;
+            console.log(parseInt(a,10));
+            console.log(a);
+            console.log(parseInt(a));
+            /*
+                练习：十六进制可以表示浮点数常量吗？
+                    直接用0xb表示会报错;
+                    但可以先使用十进制数字表示浮点型，再间接用toString()字符转换为十六进制；
+
+            */
+            console.log("*****************练习*******************");
+            // var a = 0x10.21;
+            var a = 10.222;
+            console.log(a.toString("16"));
+
+        </script>
+    </body>
+</html>

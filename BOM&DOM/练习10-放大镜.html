@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .box{
+                width: 400px;
+                height: 400px;
+                position: relative;
+                float: left;
+            }
+            .box img{
+                width: 100%;
+            }
+            .minor{
+                width: 200px;
+                height: 200px;
+                background-color: rgba(225,225,225,0.5);
+                position:absolute;
+                top: 0;
+                left: 0;
+            }
+            .image{
+                width: 400px;
+                height: 400px;
+                overflow: hidden;
+                float: left;
+                margin-left: 10px;
+                position: relative;
+            }
+            .image img{
+                width: 200%;
+                position: absolute;
+                top:0;
+                left: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 问题：
+            1.边缘问题
+            2.放大的算法；
+            -->
+        <div class="box"> 
+            <img src="image/niu.png" alt="">
+            <div class="minor"></div>
+        </div>
+        <div class="image">
+            <img id="image" src="image/niu.png" alt="">
+        </div>
+        <script>
+            var oBox =document.getElementsByClassName("box")[0];
+            var oMinor =document.getElementsByClassName("minor")[0];
+            var BigImg =document.getElementById("image");
+            oBox.onmousemove = function(event){
+                var movTop=event.clientY -oMinor.offsetWidth/2;
+                var movLeft=event.clientX -oMinor.offsetHeight/2;
+                 
+                 if(movTop<0){
+                     movTop=0;
+                 }
+                 if(movLeft<0){
+                     movLeft=0;
+                 }
+                 if(movTop>(oBox.offsetHeight-oMinor.offsetHeight)){
+                        movTop=oBox.offsetHeight-oMinor.offsetHeight;
+                 }
+                 if(movLeft>(oBox.offsetHeight-oMinor.offsetHeight)){
+                    movLeft=oBox.offsetHeight-oMinor.offsetHeight;
+                    }
+                    oMinor.style.top = movTop + "px";
+                    oMinor.style.left = movLeft + "px";  
+                    BigImg.style.top = -2*movTop + "px";
+                    BigImg.style.left = -2*movLeft + "px";
+
+            }
+        </script>
+    </body>
+</html>

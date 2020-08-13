@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+             /*
+                    1.String字符有关
+                       charAt():参数为索引值 ,返回在指定位置的字符。
+                       indexOf():参数为字符或者字符串，返回首次出现的位置  不存在返回-1；
+                       replace(1,2):替代 
+                                参数1：被替代的字符或字符串
+                                参数2：要替代的字符或字符串
+                       截取字符串：
+                          slice(起始位置，结束位置（不包括）)  推荐使用+可用负数作为参数
+                          subString()：与slice一样   
+                          substr(起始位置，截取长度)  不建议使用
+                          注：都可以只写一个参数表示从起始位置一直截到最后
+                      分割字符串：字符串到字符数组的转化方法：
+                          split(""):空字符串：一个字母一个字母的分开
+                                    "-"、",":以双引号之间的字符为分割
+             */
+             console.log("****String字符型例子：*****");
+                var str = "hello";
+                console.log(str.charAt(1)); //e
+                console.log(str.indexOf("e"));//1
+                console.log(str.indexOf("el"));//1
+                console.log(str.replace("ll","aa"));//heaao;
+                console.log(str.slice(1,2));//e
+                //负数的使用：
+                console.log(str.slice(-3,-1));
+                console.log(str.substring(1,2));//e
+                console.log(str.substr(1,2));//el
+                console.log(str.split(""));
+                var str2 ="2020-07-30";
+                console.log(str2.split("-"));
+
+              /*
+                2.Array数组
+                    push():参数：可添加一个/多个，参数之间以逗号隔开
+                       注：返回值为数组的新长度+改变原数组的数组
+                    pop(): 删除并返回最后一个元素值
+                    shift():删除第一个并返回元素值
+                       注：返回值为删除的元素值+改变原数组的数组
+                    concat():实现两个数组的拼接
+                       例 array.contact(array2);
+                       注：返回值为新数组+不会改变原来的数组、
+                    join():数组----->字符串
+                       与slice相反：实现数组给定字符形成指定的字符串","
+                    reverse():倒序
+                    截取：
+                      slice：参数有两个（起始位置，结束位置（不包括））+不会改变原数组+返回选中的元素
+                      splice：参数可以至少可以三个（起始位置，截取长度，添加新的值（可以有多个））+原数组发生改变（选中的删掉换成新添加的）
+                              +返回被删的项目
+                面试题：JS中常用的内置方法有哪些?
+                       slice和splice的区别有哪些？
+              */ 
+              console.log("****Array数组型例子：*****");
+              var array = [1,2,3,4,5];
+            //   console.log(array.push(6));//6
+            //   console.log(array.push(6,7));//7
+                //  console.log(array.pop());
+                //  console.log(array.shift());
+                //  console.log(array.reverse());
+                //  var array2 = ["a"];
+                //  console.log(array.concat(array2));
+                //  console.log(array.join(","));
+                //  console.log(array.slice(1,2));
+                //  console.log(array.splice(2,2));
+                //  console.log(array.splice(2,2,"a"));//返回被删的项目
+                array.splice(2,2,"a")
+                console.log(array);
+
+                /*
+                    3.Number数值型
+                      1.数值类型转换
+                         字符型---->数值型的方法：
+                            str*1;除了＋以外的其他运算符；
+                            parseInt(str);
+                            parseFloat(str);例如：str="10.1"
+                     2.Math:
+                        1.abs(),acos(),asin(),atan()，pow(x,y)--x的Y次方幂
+                        2.去掉小数点：
+                          1.parseInt();
+                          2.ceil();向上取整
+                          3.floor();向下取整
+                          4.round();四舍五入
+                        3.产生随机数：
+                           random()-----0-1之间产生
+                        练习 产生1-10/0-5/5-10        
+                */
+                console.log("****Number数值型例子：*****");
+                  var str ="10";
+                  console.log(str*1);
+                  console.log(parseInt(str));
+                  var str2 = "10.1";
+                  console.log(parseInt(str2));
+                  console.log(parseFloat(str2));
+
+                  console.log(Math.ceil(10.111));    
+                  console.log(Math.floor(10.911));            
+                  console.log(Math.round(10.411));  
+
+               /*
+                  随机产生：1-10
+                     先产生0-1；
+                     再乘以10；得0-10；即最大值就是9.99999，最小值就是0.1111
+                     利用ceil向上取整：得1-10;
+                  或者乘10+1，再取floor;
+               */
+               console.log(Math.ceil(Math.random()*10));
+               /*
+                  随机产生：0-5
+                     先产生0-1；
+                     再乘以6；得0-6.即最大值为5.9999,最小值为0.11111
+                     再floor;即最大值为5，最小值为0;
+               */
+               console.log(Math.floor(Math.random()*6));
+               /*
+                  随机产生：5-10
+                  再基础上加5即可；
+               */
+               console.log(Math.floor(Math.random()*6)+5);
+                /*   
+                     4.Data
+                     注意：时间不属于基本对象也不属于那些引入数据类型，他只是内置方法引入的内置对象；
+                        创建当前对象的方法： var 对象名= new Date();
+                        1.获取当前年份：对象名.getFullYear();
+                        2.获取当前月份：对象名.getMonth();
+                           注意：获得的月份是以0开始的，所以得在返回值基础上加1;
+                        3.获取当前日期：对象名.getDate();
+                        4.获取当前星期：对象名.getDay();
+                           注意：星期日返回0，其他正常；
+                        5.获取当前小时：对象名.getHours();
+                */
+                console.log("****Date日期型例子：*****");
+                var time = new Date();
+                console.log(time);
+                console.log(time.getFullYear());
+                console.log(time.getMonth()+1);
+                console.log(time.getDate());
+                //拼接：2020-8-02
+                var timer = [];
+                timer.push(time.getFullYear(),time.getMonth(),time.getDate());
+                console.log(timer.join("-"));
+                console.log(time.getDay());
+                console.log(time.getHours());
+                console.log(time.getMinutes());
+                console.log(time.getSeconds());
+                
+        </script>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            #can{
+                background: black;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 问题
+            1.按下是onmousedown,不是click点击；
+            2.只有在按下时才开始画；    
+        -->
+        <canvas id ="can"></canvas>
+        <script>
+            var oCan = document.getElementById("can");
+            var oContext = oCan.getContext("2d");
+            oContext.strokeStyle="white";
+            oContext.lineWidth=2;
+            // oContext.moveTo(0,0);
+            // oContext.lineTo(100,100);
+            // oContext.stroke();
+            oCan.onmousedown =function(event){
+                oContext.beginPath();
+                oContext.moveTo(event.clientX,event.clientY);
+                oCan.onmousemove = function(event){
+                    oContext.lineTo(event.clientX,event.clientY);
+                    oContext.stroke();                  
+                }
+            }
+            oCan.onmouseup =function(){
+                oCan.onmousemove=null;
+            }
+        </script>
+    </body>
+</html>

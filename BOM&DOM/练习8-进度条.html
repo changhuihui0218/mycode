@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .box{
+                width: 400px;
+                height: 50px;
+                border: 1px solid black;
+                border-radius: 8%;
+                line-height: 50px;
+                overflow: hidden;
+            }
+            .bar{
+                width: 0px;
+                height: 50px;
+                background-color: blue;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="bar">0%</div>
+        </div>
+        <button>start</button>
+        <script>
+            var oBtn = document.getElementsByTagName("button")[0];
+            var oBar = document.getElementsByClassName("bar")[0];
+            // oBtn.onclick = function(){
+            //     var  _width=0;
+            //     var _count=0;
+            //     timer =setInterval(function(){
+            //        if(_width<400){
+            //         _width+=4;
+            //         _count+=1;
+            //         oBar.style.width = _width+"px";
+            //         oBar.innerText=_count+"%";  
+            //     }else{
+            //         clearInterval(timer);
+            //     }
+            //     },16);
+                
+            // }
+
+//方法二：利用 window.requestAnimationFrame(run);
+
+               oBtn.onclick=run;
+            // oBtn.onclick=function(){
+            //     run();
+            // }
+                var num=0;
+                function run(){
+                    if(oBar.offsetWidth<400){
+                        oBar.style.width = (oBar.offsetWidth+4) +"px";
+                        oBar.innerText = (++num) +"%";
+                        window.requestAnimationFrame(run);
+                    }
+                }
+        </script>
+    </body>
+</html>

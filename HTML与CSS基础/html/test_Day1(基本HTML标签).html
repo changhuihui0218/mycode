@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>基础html标签</title>
+    </head>
+    <body style="height:3000px">
+        <!-- 1 标题 -->
+        我是标题
+        <h>我是标题</h>
+        <h1>我是标题</h1>
+        <h2>我是标题</h2>
+        <h3>我是标题</h2>
+        <h4>我是标题</h2>
+        <h5>我是标题</h5>
+        <h6>我是标题</h6>
+        <!-- 2 段落 -->
+        我是标题
+       <p>hahahahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhahahahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhahahahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhahahahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhahahahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
+       我是标题
+       <p>我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落</p>
+       <p>我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落</p>
+       我是标题
+       <!-- 3 超链接 -->
+       <a href="http://www.baidu.com">百度</a>
+       <a href="http://www.baidu.com" target="_blank">百度</a>
+       <!-- 4 图片
+                src---路径
+                    相对路径---找他的父亲，兄弟，孩子
+                              ../--跳出上一个
+                              /--找下一个
+                    绝对路径---固定的，带协议的（http://或盘符）
+                alt----图片加载不出来显示的文字（网络问题或路径写错了）
+                title---鼠标滑过显示文字内容
+        -->
+       <!-- <img src="../image/image02.jpg" alt=""> -->
+       <img src="../image/image03.jp" alt="一张好唯美的照片" title="我天！这也太好看了吧！">
+       <img src="D://前端培训//mycode//image//image03.jpg" alt="">
+       <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2173605841,4241897782&fm=26&gp=0.jpg" alt="">
+       <!-- 5 ul 无序列表
+            li是列表中的一项：
+            注：ul中不能放除了li以外的其他标签，但li中可以放
+        -->
+       <ul>
+           <li>a</li>
+           <li>b</li>
+           <li>c</li>
+       </ul>
+       <!-- ol 有序标签 -->
+       <ol>
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+       </ol>
+       <!-- 6 div 布局划分区块的 -->
+       <div style="background: red;width: 200px;height: 200px;">
+           我是一个div
+       </div>
+       <!-- 7 span 对一些小文字设置一些样式（字号背景颜色加粗） 可嵌套div使用 -->
+       <span style="background: green;;width: 200px;height: 200px;">
+            我是一个div
+       </span>
+       <!-- 元素的分类
+            行级元素：span a strong(加粗) i(斜体)
+                多个占一行；
+                不可设置宽高；（设置不好使）
+            块级元素：div p h1-h6 ul ol li 
+                 一个占一行（尽管设置宽度，但底下的元素不会串上来）
+                 可设置宽高；
+            行级块元素：img
+                多个占一行；
+                也可设置宽高；
+        -->
+        <div>
+            <strong>我要放暑假了</strong><i>哈哈哈哈哈</i>
+            <span style="background: hotpink;">真高兴</span>
+        </div>
+    </body>
+</html>

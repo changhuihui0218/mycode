@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .box{
+                width: 600px;
+                height: 200px;
+                border: 1px solid black;
+                margin: 100px auto;
+            }
+            li{
+                list-style: none;
+            }
+            .nav-box{
+                height: 50px;
+                background-color: black;
+            }
+            .nav-box li{
+                float: left;
+                width: 80px;
+                height: 50px;
+                color: white;
+                text-align: center;
+                line-height: 50px;
+            }
+            .nav-box .active{
+                background-color:#e0e0e0;
+                color: black;
+            }
+            .content-box .content-list{
+                display: none;
+                margin: 30px 50px;
+            }
+            .content-box .active{
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="nav-box">
+                <ul>
+                    <li class="nav-list active">第一单元</li>
+                    <li class="nav-list">第二单元</li>
+                    <li class="nav-list">第三单元</li>
+                </ul>
+            </div>
+            <div class="content-box">
+                <div class="content-list active">
+                    <ul>
+                       <li >第一单元第一课</li>
+                       <li >第一单元第二课</li>
+                       <li >第一单元第三课</li>
+                    </ul>
+               </div>
+               <div class="content-list">
+                   <ul>
+                      <li>第二单元第一课</li>
+                      <li>第二单元第二课</li>
+                      <li>第二单元第三课</li>
+                   </ul>
+              </div>
+              <div class="content-list">
+                    <ul>
+                        <li>第三单元第一课</li>
+                        <li>第三单元第二课</li>
+                        <li>第三单元第三课</li>
+                    </ul>
+              </div>
+            </div>
+        </div>
+        <script>
+            var oTab = document.getElementsByClassName("nav-list");
+            var oContent = document.getElementsByClassName("content-list");
+            for(var i=0;i<oTab.length;i++){
+                oTab[i].Index=i;
+                oTab[i].onmouseover = function(){
+                    for(var j=0;j<oTab.length;j++){
+                    oTab[j].setAttribute("class","nav-list");
+                    oContent[j].setAttribute("class","content-list");
+                }
+                    this.setAttribute("class","nav-list active");
+                    oContent[this.Index].setAttribute("class","content-list active");
+                }
+            }
+        </script>
+    </body>
+</html>

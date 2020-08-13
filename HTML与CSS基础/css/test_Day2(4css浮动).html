@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>css浮动</title>
+        <style>
+            #div1{
+                width: 200px;
+                height: 200px;
+                background: blue;
+                float:left;
+            }
+            #div2{
+                width: 200px;
+                height: 200px;
+                background:red;
+                float:left;
+            }
+            h1{
+                width: 200px;
+                height: 100px;
+                background:rosybrown;
+            }
+            /* 方法一：父类元素加高度 */
+            /* #div0{
+               height:200px;
+            } */
+            /* 方法二：父类元素溢出隐藏 overflow:hidden */
+            /* #div0{
+                overflow: hidden;
+            } */
+            /* 方法三：浮动元素后加一个div,并作清除操作 */
+            /* #clear{
+                clear:both;
+            } */
+            /* 方法四：::afer */
+            .clearfix::after{
+                /* content:"hahajd"; */
+                content:"";
+                display:block;
+                clear:both;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="div0" class="clearfix">
+            <div id="div1"></div>
+            <div id="div2"></div>
+            <!-- <div id="clear"></div> -->
+        </div>
+        <h1>hahhahh</h1>
+    </body>
+</html>

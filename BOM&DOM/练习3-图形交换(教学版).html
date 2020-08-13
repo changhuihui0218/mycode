@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        
+    </body>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            .box{
+                width: 600px;
+                border: 1px solid black;
+                margin: 100px auto;
+            }
+            .box-top{
+                text-align: center;
+                border-bottom: 1px solid black;
+            }
+            .box-top .top-image{
+                width: 400px;
+            }
+            .box-bottom li{
+                float: left;
+                list-style: none;
+                width: 24.5%;
+                border-left: 1px solid black;
+                text-align: center;
+            }
+            .clearfix::after{
+                content: "";
+                display: block;
+                clear: both;
+            }
+            .box-bottom li:first-child{
+                 border-left: 0;
+            }
+            .box-bottom img{
+                width: 120px;
+  
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div class="box-top">
+                <img  class="top-image" src="image/slider1.jpg" alt="">
+            </div>
+            <div class="box-bottom">
+                <ul class="clearfix">
+                    <li><img class="image-list" src="image/slider1.jpg" alt=""></li>
+                    <li><img class="image-list" src="image/slider2.jpg" alt=""></li>
+                    <li><img class="image-list" src="image/slider3.jpg" alt=""></li>
+                    <li><img class="image-list" src="image/slider4.jpg" alt=""></li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            var topImage = document.getElementsByClassName("top-image")[0];
+            var imageList = document.getElementsByClassName("image-list");
+            for(var i=0;i<imageList.length;i++){
+                imageList[i].onmouseover = function(){
+                    topImage.setAttribute("src",this.getAttribute("src"));          
+                }
+            }
+        </script>
+    </body>
+</html>

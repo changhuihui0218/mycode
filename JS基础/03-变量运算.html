@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header{
+           color: blue;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        /* 1.简单的运算符
+             +；1.正常的进行数值运算
+                2.字符串的拼接（隐式转换类型），将数值型隐式转换为字符型做运算
+             -*\%: 1.正常的进行数值运算
+                   2.若是字符型，能转数值类型，则转继续做正常的运算；
+                                不能转，不报错则出现NaN:not a number,
+        */
+        var a = 10;
+        var b = 20;
+        console.log(a+b);
+
+        var a = "10";
+        var b = 20;
+        console.log(a+b);
+
+        var a = 10;
+        var b = 20;
+        console.log(a-b);
+
+        var a = "10";
+        var b = 20;
+        console.log(a-b);
+
+        var a = "10";
+        var b = 20;
+        console.log(a*b);
+
+        var a = "10";
+        var b = 20;
+        console.log(a/b);  //结果可以为小数，不是整除
+
+        var a = 3;
+        var b = 2;
+        console.log(a/b);
+
+        var a = "10";
+        var b = 20;
+        console.log(a%b);
+
+        /*
+            2.字符串的拼接+
+        */
+        var str = "Hello world!";
+        document.write(str+"!");
+        document.write("<h1>hahhahh</h1>");
+        document.write("<h1>"+str+"</h1>");
+        document.write("<h1 class='header'>"+str+"</h1>");
+        // 3.精度问题
+        var a = 0.1;
+        var b = 0.2;
+        console.log(a+b);
+
+        var a = 0.1;
+        var b = 0.3;
+        console.log(a+b);
+        /*
+            练习：
+             表达式的类型只取决于运算符，与操作数无关。错 例如下面
+        */
+        console.log("****************练习********************");
+        var a = 0;
+        var b = "a";
+        var c = a||b;
+        console.log(c);
+    </script>
+</body>
+</html>

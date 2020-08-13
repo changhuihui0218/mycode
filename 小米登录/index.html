@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小米账号-登录</title>
+    <link rel="stylesheet" href="common.css">
+    <style>
+        body{
+            font-size: 12px;
+            font-family: Helvetica,arial,"Hiragino Sans GB","PingFang SC","Microsoft YaHei","微軟正黑體","儷黑 Pro",sans-serif;
+        }
+        .header .h-logo{
+            width: 200px;
+            height: 98px;
+            background: url(image/mistore_logo.png);
+        }
+        .content{
+            height: 588px;
+            background-image: url(image/bg.jpg);
+            background-position: top center;
+            overflow:hidden;
+        }
+        .content .main-content{
+            height: 588px;
+            margin-top:30px;
+        }
+        .content .login-box{   
+            width:410px;
+            height:566px;
+            background: #ffffff;
+            margin-left: auto;
+            margin-right: 0;
+        }
+        .content .login-box .nav-list{
+            width: 410px;
+            height: 31.333px;
+            padding:27px 0 24px;
+            text-align: center;
+        }
+        .content .nav-list a{
+            font-size: 24px;
+            color: #666666;
+        }
+        .content .nav-list a.active{
+            color:#f56600;
+        }
+        .content .nav-list a:hover{
+            color:#f56600;
+        }
+        .content .nav-list span{
+            width: 1px;
+            height: 24px;
+            font-size: 24px;
+            border: 1px solid #e0e0e0;
+            margin: 0 43px 0 42px;;
+        }
+        .content .login-form{
+            width:348px;
+            margin: 0 auto;
+        }
+        .content .login-form .inp-box{
+             width:306px;
+             height: 22px;
+             border: 1px solid #e0e0e0;
+             padding: 13px 16px 13px 14px;  
+             /* margin-top: 14px; */
+             margin-bottom: 14px;
+        }
+        .content .login-form input{
+            width:306px;
+            height: 22px;
+            outline: none;
+            border: none;
+            font-family: arial,"Hiragino Sans GB","Microsoft YaHei",sans-serif;
+            font-size: 100%;
+        }
+        .content .login-form button{
+            width: 339px;
+            height:50px;
+            background: #ff6700;
+            color: #ffffff;
+            border: none;
+            margin-top: 10px;
+            margin-bottom: 14px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部部分 -->
+        <div class="header wrapper">
+             <div class="h-logo"></div>
+        </div>
+        <!-- 中间部分 -->
+        <div class="content">  
+            <div class="main-content wrapper">
+                <div class="login-box">
+                   <div class="nav-list">
+                       <a class="active" href="">帐号登录</a>
+                       <span></span>
+                       <a href="">扫码登录</a>
+                   </div>
+                   <div class="login-form">
+                       <div class="inp-box">
+                           <input type="text" placeholder="邮箱/手机号码/小米ID">
+                       </div>
+                       <div class="inp-box"> 
+                            <input type="password" placeholder="密码">
+                       </div>
+                       <div class="btn-box">
+                           <button>登录</button>
+                       </div>
+                    </div>
+                <div class="login-info">
+                     <span>手机短信注册/登录</span>
+                </div>
+                <div class="others-login">
+
+                </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- 底部部分 -->
+        <div class="footer">
+
+        </div>
+    </div>
+</body>
+</html>

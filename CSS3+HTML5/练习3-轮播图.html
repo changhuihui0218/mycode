@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            li{
+                list-style: none;
+            }
+            .slipper{
+                height: 500px;
+                position: relative;
+            }
+            .slipper-image{
+                height: 500px;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+                 transition: all 1s ease;
+            }
+            .slipper .i-1{
+                background-color: rgb(232, 232, 232);
+            }
+            .slipper .i-2{
+                background-color: black;
+            }
+            .slipper .i-3{
+                background-color: rgb(232, 232, 232);
+            }
+            .slipper-image.active{
+                opacity: 1;
+            }
+            .slipper-image div{
+                width: 1230px;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="slipper">
+                <div class="slipper-image i-1 active">
+                    <div>
+                        <img src="https://img.alicdn.com/simba/img/TB1fN3WA7CWBuNjy0FaSutUlXXa.jpg" alt="">
+                    </div>
+                </div>
+                <div class="slipper-image i-2">
+                    <div>
+                        <img src="https://img.alicdn.com/tps/i4/TB1o_JiAVOWBuNjy0FiSutFxVXa.jpg" alt="">
+                    </div>
+                </div>
+                <div class="slipper-image i-3">
+                    <div>
+                        <img src="https://img.alicdn.com/simba/img/TB114X1gBjTBKNjSZFuSuv0HFXa.jpg"" alt="">
+                    </div>
+                </div>
+            <div class="slipper-btn">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            var slipperImg =document.getElementsByClassName("slipper-image");
+            var nowIndex = 0;
+            setInterval(function(){
+                slipperImg[nowIndex].classList.remove("active");
+                ++nowIndex;
+                if(nowIndex==3){
+                    nowIndex=0;
+                    slipperImg[0].classList.add("active");
+                }else{
+                    slipperImg[nowIndex].classList.add("active");
+                }
+            },2000);
+        </script>
+    </body>
+</html>

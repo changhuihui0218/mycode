@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- JavaScript的入门
+        变量的定义以及几种调试方法
+    -->
+    <!-- 写法以及位置
+        <script></script>写哪里都能够实现，但一般习惯写在body中，作为最后一个标签
+    -->
+    <script>
+        // 变量的定义 var = ？可以是任何类型（弱类型语言）
+        var a = 10;
+        var b ="hello word";
+        /* 调试方法
+            1.alert()方法：页面弹出一个框显示（老）
+            2.document.write():页面直接输出内容
+            3.console.log():控制台显示内容（建议使用）
+        */
+        alert(a);
+        document.write(b);
+        console.log(a,b);
+        /*
+            变量值：不同的值反应出不同的变量类型
+            变量名的命名规范：
+            （JS有代码检索功能，红色报错（在console控制台中会有红字显示），黄色警告）
+                1.可以包含数字、字母、下划线_、美元符$
+                2.注意：不能以数字开头且区分大小写,不能使用关键字和保留字
+                3.若一个变量名是多个单词组成，则采用驼峰式命名：出第一个单词首字母小写，其他的首字母大写
+            面试官问一些犄角旮旯的问题，比如：
+            变量名有些用中文命名好使，但是仅限于当前的运行环境使用的编码方式UTF-8，换其他的则不好使了，不建议使用
+        */
+       var a123 = 10;
+       var strArray = [1,2,3,4]; 
+       console.log(strArray);
+      
+    </script>
+</body>
+</html>

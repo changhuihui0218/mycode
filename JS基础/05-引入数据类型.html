@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            /*
+                1.数组 （JS中不用告诉他的长度，直接写内容即可）
+                    1.数组的定义：var a=[];([]中直接些内容)
+                                 通过new 例如 var arr = new Array();  new就是构造，不能用方括号 new Array[]
+                    2.二维数组直接嵌套使用
+                    3.数组中的元素可以是不同类型；
+            */
+            // 空数组
+            var array = [];
+            console.log(array);
+            //一维数组
+            var array = [1,2,3,4,5,6];
+            console.log(array);
+            //二维数组
+            var array = [1,2,3,[4,5,6]];
+            console.log(array);
+            //类型可以不统一
+            var array = ["a",1,undefined,null,true];
+            console.log(array);
+
+            console.log("**************new**********");
+            //new创建
+            var arr = new Array();
+            console.log(arr);
+            var arr = new Array;
+            console.log(arr);
+            var arr = new Array(5);
+            console.log(arr);
+            var arr = new Array(5,6);
+            console.log(arr);
+            console.log(typeof(arr));//返回值是object
+            var str = new String("123");
+            console.log(str);
+            console.log(typeof(str));
+
+            /*
+                面试题：
+                    1.JS中的数据类型有哪些（或几种）？
+                       分为简单数据类型和引用数据类型；
+                            简单数据类型分为5种：string、number、Boolean、undefined、null
+                            引用数据类型分为：数组、object、函数
+                    2.引用的是内存地址例如两个数组: b=a;修改其中的一个值，另一个也会改变
+
+
+            */
+            var a = [1,2,3];
+            var b = a;
+            a[0] ="a";
+            console.log(b);  //["a",2,3];
+
+            //面试题一：a!=b
+            var a = [];
+            var b = [];
+            if(a==b){
+                console.log("a=b");
+            }else{
+                console.log("a!=b");
+            }
+            //面试题二：
+            var a = [1,2,3];
+            var b = a[0];  //a[0]的值赋值给b
+            a[0]="a";
+            console.log(b);//b=1;
+
+            /*
+                2.Object 对象
+                    1.定义：var xxx = {key:value,key:value....}
+                    2.查看具体对像的属性值可通过.(链式操作)来查看 
+                    3.对象可嵌套使用，用.可查看
+                    4.和数组一样xxx存放的堆内存地址，可以通过改变一个来改变另一个
+                    5.对象中包括属性，也包括方法（存在对象中的函数，匿名函数）
+                注：对象可分为预定义对象（像日期Date一样，每回要用new创建）和自定义对象（用object对象创建）
+                   不一定都要用new创建对象；
+             */
+             var person ={
+                 name:"changhuihui",
+                 age:20
+             }
+             console.log(person);
+             console.log(person.age);
+
+             var person ={
+                 name:"changhuihui",
+                 age:20,
+                 parent:{
+                     name:"babba",
+                     age:47
+                 }
+             }
+             console.log(person);
+             console.log(person.parent.name);
+
+             var person ={
+                 name:"changhuihui",
+                 age:20
+             }
+             var person2=person;
+             person.age=18;
+             console.log(person2.age);
+              
+            //对象中的属性+方法
+             var person ={
+                 name:"changhuihui", //属性
+                 sayHello:function(a){  //方法
+                     console.log("hello"+a);
+                 }
+             }
+             console.log(person.sayHello("慧慧"));
+             /*
+                3.Function 函数（也算）
+                    1.定义：Function定义：
+                                Function 函数名xxx(){} ...()传参...{}函数体
+                            var定义：(匿名函数)  
+                                var 变量名xxx= Function(){}
+                    2.调用：xxx();       
+                    3.返回值：return 函数遇到则直接结束，后面的语句将不再执行
+                    4.参数：不用完全匹配形参和实参参数的个数，其他未传的参数则为undefined；
+                注意：1.函数分为预定义函数（那些内置方法）和自定义函数（function 定义的两种函数）
+                     2.函数可以嵌套调用，但是函数作用的范围是有限制的，在最内层的函数在外面不好使，和变量一样
+                     3.调用函数得加括号（），不加括号直接一个函数名代表函数体，不会报错，
+                        也可以直接将一个函数名赋值给一个变量；实质上就是把函数体给了变量，变量名+（）可以实现函数；
+
+             */
+             //定义方法一：
+             function foo(a,b){
+                 return a+b;
+             }
+            console.log(foo(1,2));
+
+             //定义方法二：
+            var foo=function(a,b){
+                return a+b;
+            } 
+            console.log(foo(2,3));
+
+            //参数
+            function foo(a,b,c,d){
+             }
+            console.log(a,b);//a,b有值，但是c,d为undefined
+            /*
+                注意：
+                    局部变量：目前来说，在函数内部声明的变量，仅在函数内部定义的（var）,在函数内部生效
+                    全局变量：在函数外部声明的变量，有些在函数内部直接使用变量名赋值的（a=10）,
+                             隐式声明为全局变量（有点不太规范）
+
+            */
+
+            //局部变量
+            function foo(){
+                var a = 10;
+            }
+            foo();
+            console.log(a);//会报错；
+
+            //全局变量
+            function foo(){
+                 a = 10;//隐式声明为全局变量
+            }
+            foo();
+            console.log(a);//a=1;
+        </script>
+    </body>
+</html>

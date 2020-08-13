@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>css盒模型</title>
+        <style>
+            /* 标准盒模型 
+              box-sizing默认是标准盒模型 content-box
+              属性width=内容宽度;形状从内容外增大
+              */
+            #div1{
+                width:200px;
+                height:200px;
+                background: red;
+                /* border复合属性
+                    border-style：solid/dashed(虚线)/dotted(dian)
+                    border-color：
+                    border-width:
+                 */
+                border:black solid 10px;
+                /* border-style:dashed; */
+                /* border-style:dotted;
+                border-width:10px;
+                border-color:black; */
+                /* 一个值：上下左右一样
+                    两个值：上下、左右
+                    三个值：上、右、下、左=右
+                    四个值：上右下左（顺时针）
+                    padding-top/padding-bottom/left/right
+                 */
+                /* padding: 20px; */
+                /* padding:10px 20px 30px 40px; */
+                /* padding: 10px 20px 30px; */
+                /* padding: 10px 20px; */
+                /* padding-top:10px; */
+                padding-right: 10px;
+                margin:30px;
+            }
+            /* 怪异盒模型 
+                  ie6及以下版本 不写DOCTYPE 时就成为怪异盒模型
+                  css3 中有个属性 box-sizing：border-box
+                  属性width=内容宽度+padding+margin
+                  形状不变
+            */
+            #div2{
+                box-sizing: border-box;
+                width:200px;
+                height:200px;
+                background: red;
+                border:black solid 10px;
+                padding: 20px;
+                margin:30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="div1">我是标准盒模型</div>
+        <div id="div2">我是怪异盒模型</div>
+    </body>
+</html>
