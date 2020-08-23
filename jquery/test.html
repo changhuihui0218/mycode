@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        a {
+            display: inline-block;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+</head>
+
+<body>
+
+    <div>no id</div>
+    <div id="hey">with id</div>
+    <div id="there">has an id</div>
+    <div>nope</div>
+
+    <script>
+        // Using .one() so the handler is executed at most once
+        // per element per event type
+        $("div[id]").one("click", function () {
+            var idString = $(this).text() + " = " + $(this).attr("id");
+            $(this).text(idString);
+        }); 
+    </script>
+
+        </body>
+
+        </html>

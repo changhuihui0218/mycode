@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- jQuery
+          1.类库：jquery是js的一个类库;只是封装了方法，具体的功能还是要自己实现；
+                  ---相当于盖大楼时的砖头一样，要自己一个一个搭建；
+                  以前使用，现在大多数公司已经选择框架来写了，熟练就好；
+            框架：vue，react,他们有了大概的框架，只需要往里填就行；性能好，现在也在使用；
+          2.版本：有1版本，2版本，3版本；
+                 常用的版本是1版本，兼容性好，也会兼容ie6浏览器，所以代码量多；
+                 3版本是移动端的版本，手机一般浏览器是更新的最新的，所以不需要兼容ie6,所以代码量量少；
+          3.优势： 相比于原生js,代码量少，（写得少，做得多）
+             轻量级：所占内存小；
+             强大的选择器：
+               原生js:通过document.getElementClass,id TargetName等方式来获取元素，再进行操作；
+                      但是选择器少，就这几个；
+                jquery：选择器的选择范围很大；
+             封装了一些DOM操作方法；增删改填；代码量少
+             可靠的事件处理机制；例如事件委托等；
+             完善Ajax(异步处理)；
+        -->
+        <!-- 
+           如何使用jquery:
+             1.首先下载文档  jquery.js;
+                有两个文件分别以.js,.main为结尾；
+                .js:是用于现开发阶段，好调试；
+                .main:  是经过压缩的版本，在上线时使用，内容全都压缩成一行；
+             2.引入jquery
+                 <script src="------"></script> ---填写文件所在地址
+                 注意：一定要写在jquery代码的上面；                                                                                       
+            3.在写自己的内容  <script>--------</script>
+         -->
+         <div class="div1">
+             hhhaa
+         </div>
+         <script src="jquery-1.12.4.js"></script>
+         <script>
+             $(".div1").css("background","red");
+         </script>
+    </body>
+</html>

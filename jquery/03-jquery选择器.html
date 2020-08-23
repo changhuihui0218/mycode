@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="div1">hallow</div>
+        <ul>
+            <li class="aa">1</li>
+            <li class="aa">2</li>
+            <li id="bb">3</li>
+            <li>4</li>
+        </ul>
+
+        <ul class="big">
+            <li>0000</li>
+            <li class="pre">111</li>
+            <li>222
+                <ul>
+                    <li>aaa</li>
+                    <li>bbb</li>
+                    <li>ccc</li>
+                </ul>
+            </li>
+            <li>333</li>
+        </ul>
+        <li>4444</li>
+
+        <div class="div0">属性选择器</div>
+        <div class="d iv0">属性选择器</div>
+        <span class="div0">属性选择器</span>
+
+
+        
+        <script src="jquery-1.12.4.js"></script>
+        <script>
+            //     <!-- 1.基本的选择器 -->
+            $(".div1").css("background","red");//class
+            $("#bb").css("background","green");//id选择器
+            // $("li").css("background","yellow");//标签选择器
+
+             //     <!-- 2.层级选择器 -->   
+            // $("ul.big>li").css("border","2px solid black");//选中直接子代选择器
+            // $("ul.big li").css("border","2px solid black");//给定祖先的所有后代；
+            // $(".pre + li").css("border","2px double black");//在pre之后的一个兄弟元素
+            // $(".pre ~ li").css("border","2px double black");//在pre之后的所有兄弟元素
+
+            //     <!-- 3.属性选择器 -->  
+            // $("div[class='div0']").css("background","pink");
+            // $("span[class='div0']").css("background","pink");//相等字符串
+            // $("[class!='div0']").css("background","pink");//相等字符串
+            // $("[class*='d']").css("background","pink");//给定字符串匹配
+            // $("[class~='d']").css("background","pink");//用空格符隔开给定字符
+            // $("[class$='0']").css("background","pink");//以给定字符结尾
+            // $("[class^='d']").css("background","pink");//以给定字符开始
+
+
+            //     <!-- 4.子元素选择器 -->  
+
+
+
+
+            //     <!-- 5.基本筛选 -->  
+
+            //     <!-- 6.可见性筛选 -->  
+
+            //     <!-- 7.表单选择器 -->  
+
+        </script>
+    </body>
+</html>

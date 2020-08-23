@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 问题：若是将<script>中的内容放在自己定义的html元素的上方（或者放在head标签中），则会出现什么问题并如何解决？
+                 出现的问题：会报错，因为代码执行是从上往下执行，则document.getElementId()；取不到则会返回空null;
+                  解决方法：
+                     原生js：在<script>中的第一行添加一行代码；window.onload=function(){-----};然后将里面的代码放到括号中；
+                             onload它会等到所有的资源加载完才会执行；资源不仅仅指html元素文档。还有图片视频等；
+                     jquery：不报错，但是获取的元素为undefined
+                            在<script>中的第一行添加一行代码；$(function(){-------});然后将里面的代码放到括号中
+                            $(function(){-------})是简写；完全版本是：$(document).ready(function(){-----})      
+        -->
+        <script src="jquery-1.12.4.js"></script>
+        <script>
+            // 方法一：原生jsn
+            window.onload = function(){
+                // var oDiv=document.getElementById("div1");
+                // console.log(oDiv.innerHTML);
+                console.log(111);
+            }
+            window.onload = function(){
+               // var oDiv=document.getElementById("div1");
+                // console.log(oDiv.innerHTML);
+                console.log(222);
+            }
+            //方法二:文档就绪函数jquery
+            $(function(){
+              // var oDiv=document.getElementById("div1");
+                // console.log(oDiv.innerHTML);
+                console.log(333);
+            })
+            $(function(){
+              // var oDiv=document.getElementById("div1");
+                // console.log(oDiv.innerHTML);
+                console.log(444);
+            })
+        </script>
+        <div id="div1">
+            哈哈哈哈
+        </div>
+       <!-- 
+           总结: js,jquery都可以解决这个问题,那么二者有什么不同?
+              编写个数:
+                  原生js中:若出现多个window.onload,则会出现覆盖现象,最后一个效果才会实现;
+                          像变量赋值一样;
+                  jQuery:相当于调用方法一样,多个也可以实现;  
+              简写方法:
+                  jquery可以简写,但是原生js则不可以;
+              执行时机:
+                 原生js:等待所有资源全部加载完毕才执行;
+                 jquery:不等待资源加载(比如图片,视频),只需要DOM绘制完毕即可;
+            注:两种提起出来的对象不同,其所对应的方法也应该不同;            
+        -->
+    </body>
+</html>

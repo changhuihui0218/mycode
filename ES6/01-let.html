@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- ES6
+            1.ES6与js的关系：
+                  ES6是js语言下的一个标准；
+                  ES6是js的标准，js是ES6的实现；                
+        -->
+        <script>
+            /*
+                 变量的定义：let
+                 let与var的区别（let的特性）：
+                     1.无变量提升 ：
+                        var:当var定义的变量先直接使用后定义声明时，他也好使,不报错,输出undefined；
+                            他会在当前作用域的上面，定义申明这个变量；
+                        let:let定义的变量无变量提升，若先使用会直接报错未初始化；
+                        若一个变量都没有var，let定义直接使用，则会报错……of undefined
+                     2.不可多次定义：
+                        var:var可以对同一个变量进行多次var定义，也可进行多次赋值；
+                        let:let不可以对同一变量进行多次let定义，但是可以进行多次赋值；
+                     3.块级作用域：
+                         var:通过对var定义的变量只有两种作用域，函数内和函数外进行划分，与{}无关；
+                         let:let定义的变量有块级作用域；主要以{}来识别；
+            */
+            //1.变量提升：
+            // console.log(a);
+            // var a=0;
+            // console.log(b);//b未初始化；
+            // let b=0;
+
+
+            //2.多次定义
+            // var a =1;
+            // var a=2;
+            // console.log(a);
+            // var b =1;
+            //  b=2;
+            // console.log(b);
+
+            // let a =1;
+            // let a=2;
+            // console.log(a);//a……of declared
+            // let b =1;
+            //  b=2;
+            // console.log(b);
+
+
+            //3.块级作用域：
+            // var a=true;
+            // if(!a){
+            //     var y=19;
+            // }
+            // console.log(y);
+
+            // var a=true;
+            // if(a){
+            //     let y=19;
+            // }
+            // console.log(y);
+
+            //练习：
+            for(var i=0;i<3;i++){ //i=0 1 2
+                console.log(i);
+            }
+            for(let i=0;i<3;i++){//i=0 1 2
+                console.log(i);
+            }
+            for(var i=0;i<3;i++){ //i=0 1 2
+               setTimeout
+                console.log(i);
+            }
+            for(let i=0;i<3;i++){//i=0 1 2
+                console.log(i);
+            }
+            
+        </script>
+    </body>
+</html>
