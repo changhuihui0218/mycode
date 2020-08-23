@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 箭头函数
+             1.写法：
+                规范写法：var 函数名 = ()=>{------}
+                   ()用来传参数，若参数只有一个时，（）可以不要；
+             2.特点：
+                 1.thi指向：普通函数：this指向的是执行的this;
+                            箭头函数：this指向的是声明的this;   
+                    怎么找箭头函数的this呢？
+                      箭头函数自己无this，找它父作用域的this
+                 2.箭头函数不能作为构造函数，即不能通过new出来；
+                 3.箭头函数无arguments，若想知道传的参数是什么，则用...rest;
+        -->
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <script>
+            //常规写法：
+            var f1 = ()=>{
+                console.log(1);
+            }
+            f1();
+            var f2 = (x,y)=>{
+                console.log(x+y);
+            }
+            f2(1,2);
+
+            //省掉（）的写法
+            var f3 =x=>{
+                console.log(x);
+            }
+            f3(3);
+
+            //省掉{}的写法x
+            var f4 =x=>x;   //相当于var f4 =x=>{return x;}
+            console.log(f4(4));
+
+
+            //特点1
+            //定时函数的另一种写法：
+            /*
+                    var aLi = document.getElementsByTagName("li");
+                    for(var i=0;i<aLi.length;i++){
+                    aLi[i].onclick = function(){
+                        //    setTimeout(function(){
+                        //        console.log(this);  //this指向的是window
+                        //    },1000)
+                        setTimeout(()=>{
+                            console.log(this);  //this指向的是aLi[i]
+                        },1000)
+                    }
+                    } 
+                    
+                    var obj = {
+                        name:"zs",
+                        //  say:function(){
+                        //      console.log(this); //this指向的是对象
+                        //  }
+                        say:()=>{
+                            console.log(this); //this指向的是window
+                        }
+                    }
+                    obj.say();
+            */
+
+
+            
+            //特点2
+            /*
+                    function Person(){   //方法名大写是类=构造函数，也可以小写
+                        this.name="zs"
+                    }
+                    var person = new Person();
+                    console.log(person);
+
+                    var Cat = ()=>{   
+                    }
+                    var cat1 = new Cat();
+                    console.log(cat1);  //会报错Cat is not a constructor
+            */
+
+
+            //特点3
+            function fun(){
+                console.log(arguments);
+            }
+            fun(1,2);
+            // fun1 = ()=>{
+            //     console.log(arguments);  //会报错，显示arguments未定义；
+            // }
+            // fun1(1,2);
+            fun3 = (...rest)=>{
+                console.log(rest);  //会报错，显示arguments未定义；
+            }
+            fun3(1,2);
+
+        </script>
+    </body>
+</html>

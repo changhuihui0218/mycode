@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- rest 
+          1.写法：...
+          2.含义：和扩展运算符相反
+                 将函数剩余参数放到数组中
+          3.使用范围：函数形参中
+          ES5语法：
+          函数中有一个属性arguments:来得到所传入的参数;
+                                  返回值是一个类数组；
+                                  可以通过arguments[0],[1]，来得到具体的值；
+                arguments.callee：得到这个函数的函数体;
+                                 一般用于递归调用，为了以后改名方便；
+        -->
+        <script>
+            //全部的情况
+            function f1(...rest){
+                console.log(rest);
+            }
+            f1(1,2,3);
+            //剩余的情况
+            function f2(x,y,...rest){
+                console.log(rest);
+            }
+            f2(1,2,3);
+            //ES5练习
+            function f3(){
+                console.log(arguments);
+                console.log(arguments[0]);
+                console.log(arguments.callee);
+            }
+            f3(1,2,3);
+        </script>
+    </body>
+</html>a

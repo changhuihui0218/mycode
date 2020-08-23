@@ -26,6 +26,8 @@
                      3.块级作用域：
                          var:通过对var定义的变量只有两种作用域，函数内和函数外进行划分，与{}无关；
                          let:let定义的变量有块级作用域；主要以{}来识别；
+                    4.临时失效，也称暂时性死区，
+                       （let定义的变量  在代码块内 到定义let这一行往上 临时失效 ），外面定义的都不好使
             */
             //1.变量提升：
             // console.log(a);
@@ -64,20 +66,46 @@
             // console.log(y);
 
             //练习：
-            for(var i=0;i<3;i++){ //i=0 1 2
-                console.log(i);
+            // for(var i=0;i<3;i++){ //i=0 1 2
+            //     console.log(i);
+            // }
+            // for(let i=0;i<3;i++){//i=0 1 2
+            //     console.log(i);
+            // }
+
+            //for循环会很快，1000之前就完成了然后i=3，所以定时函数一直输出3
+            for(var i=0;i<3;i++){ //i=3 3 3
+               setTimeout(function(){
+                console.log(i);    
+               },1000)
             }
+
+
+           /*
+               虽然for很快，但是let定义的变量有块级作用域，
+               所以i=0是一层，i=1是一层，所以等到定时函数到那一层的时候，i就会输出哪一个
+            */
             for(let i=0;i<3;i++){//i=0 1 2
-                console.log(i);
+                setTimeout(function(){
+                   console.log(i);  
+               },1000)
             }
-            for(var i=0;i<3;i++){ //i=0 1 2
-               setTimeout
-                console.log(i);
-            }
-            for(let i=0;i<3;i++){//i=0 1 2
-                console.log(i);
-            }
-            
+
+
+            //4.临时失效
+            var a =10;
+           function fun(){
+            //    let a=10;             
+              console.log(a);
+           }
+           fun();
+
+           var a =10;
+           function fun2(){          
+              console.log(a);   //会报错，a未初始化；let定义了a后，即使在外面定义了里面也不好使；
+              let a=10;   
+           }
+           fun2();
         </script>
     </body>
 </html>

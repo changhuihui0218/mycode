@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 解构赋值
+            1.数组：按照索引的顺序来进行赋值；
+            2.对象：按照key的属性对应；
+                   若想要取个别名则属性：别名；
+              只有解构赋值为undefined时才会用到默认值，否则为解构出来的值；
+            3.字符串：按照索引位置来取
+        
+        -->
+        <script>
+            //1.数组
+            //简单一维数组
+            let arr=[1,2,3]
+            // let [a,b,c]=arr;
+            // console.log(a,b,c);   //a=1,db=2,c=3
+
+            // let [a,b]=arr;
+            // console.log(a,b);  //有多少就结构多少
+
+            // let [a,b,c,d]=arr;
+            // console.log(a,b,c,d);   //多出来的则是undefined
+
+            let [a,b,c,d=12]=arr;
+            console.log(a,b,c,d);   //多出来的则是undefined，若他有默认值，则未默认值
+
+    
+
+            //复合二维数组
+            let arr2=[1,2,[3,4],5];
+            // let [x,y,z,m]=arr2;
+            // console.log(x,y,z,m);  //x=1;y=2;z=[3,4];m=5
+
+            //完全解构
+            let [x,y,[p,q],m]=arr2;
+            console.log(x,y,p,q,m);    //x=1;y=2;p=3.q=4;m=5
+
+              
+            //2.对象
+            var obj={
+                name:"zs",
+                age:18
+            }
+            // var {name,age}=obj;
+            // console.log(name,age);
+
+            // var {age,name}=obj; 
+            // console.log(name,age);   //与顺序无关，按照key对应来取
+
+            // var {a,name} =obj;
+            // console.log(name,a);   //会报错，a匹配不上
+
+            //如想使用别名
+            var {age:age1,name} =obj;
+            console.log(name,age1); 
+
+            //默认值
+            var {age:age1,name,school="北大"} ={name:"zs",age:18};
+            console.log(name,age1,school); 
+
+            // var {age:age1,name,school="北大"} ={name:"zs",age:18,school:"黑大"};
+            // console.log(name,age1,school);   //重复则会覆盖
+
+
+            //3.字符串
+            var str = "abcde";
+            var [u,i,o]=str;
+            console.log(u,i,o);
+
+        // 练习:交换 num1 num2的值
+        var num1 =5;
+        var num2 =6;
+        //方法1
+            // var num =num1;
+            // num1=num2;
+            // num2=num;
+        //方法2
+            // var num=num1+num2;//num=11;
+            // num1=num-num1; //num1=5
+            // num2=num-num1; //num2=6
+
+        //方法3
+        var [num1,num2]=[num2,num1];
+        console.log(num1,num2);
+        </script>
+    </body>
+</html>
