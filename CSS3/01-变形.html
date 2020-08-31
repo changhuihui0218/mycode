@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .box{
+                width: 200px;
+                height: 200px;
+                border: 1px dashed black;
+                margin: 100px auto;
+
+            }
+            .div{
+                width: 200px;
+                height: 200px;
+                background-color: red;
+
+                /*旋转*/
+                /* transform: rotate(45deg); 
+                transform: rotate(-45deg);
+                transform-origin: 0 0; */
+                
+                /*倾斜*/
+                /* transform: skew(180deg,180deg); */
+
+                /*缩放*/              
+                 /* transform:scale(.5);
+                 transform-origin: 0 0; */
+
+                /*位移*/
+                 transform: translate(10px,10px);
+                 transform-origin: center center; 
+                 /*不好使原因:原点是相对于自己定位的,对于位移来说,定位在哪里移动端的效果都一样*/
+
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 变形 transform
+            1.旋转：rotate(1deg);
+                   参数:以deg为计量单位的；
+                        正:顺时针 负：逆时针；
+            2.缩放:scale(1);
+                  参数:数字:小数即缩小;整数即放大;
+                  注意:若里面有文字的话,文字会随着图像一块缩小/放大
+                  用途:1.浏览器文字大小最小是12px,若想变得更小,则用缩放
+                       2.实现小数级的单位,比如边框0.--px;时
+            3.位移:translate(1,2)
+                 参数:带px;不提供y的话默认为0;相对于自己
+                 与定位的区别:
+                    定位:只是位置发生了变化;
+                    translate():后续会结合其他动画使用,可以实现3D效果
+          transform-origin:原点 适用于上述三种情况;
+                          参数的类型(横坐标,竖坐标):数字(带px);
+                                                  百分比:(相对于自己)
+                                                  字母:center top left right bottom
+          注:transform:是一个复合型属性,不可同时写两个transform,后者会将前者覆盖;
+                       若是同时实现多个属性,则将他们罗列到一起以空格分开就可;       
+        -->
+        <div class="box">
+            <div class="div">hallow</div>
+        </div>
+    </body>
+</html>

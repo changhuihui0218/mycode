@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            img{
+                position: fixed;
+                /* transition: all 1s ease; */
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 问题
+            插入图片时只能设置宽和高中得到一个；
+            1.不能把叶子照片写死；得通过js写出来插进去；
+            2.如何将DOM元素插入到页面中；
+            3.怎么获取页面的宽度和高度：document.documentElement.clientWidth || document.body.clientWidth;
+            4.类中的宽高，top,weight不用加px,直接数字
+        -->
+        <script>
+            /*
+                获取屏幕宽高的方法：
+                var bWidth = document.body.clientWidth;
+                var bHeight = document.body.clientHeight;
+                var bWidth = window.screen.availWidth;
+                var bHeight = window.screen.availHeight;
+                console.log(bWidth,bHeight);
+            */ 
+            var bWidth = document.documentElement.clientWidth;
+            var bHeight = document.documentElement.clientHeight;
+            function Leaf(left){
+                this.width = (Math.random()*50+100);   //随机宽度：100-150；
+                this.top=0;
+                this.left=Math.random()*(bWidth-this.width);   //最大的左边距为 屏幕宽度-叶子宽度
+
+
+               //DOM元素 图片
+                var img =new Image();  //动态创建图片
+                img.src="img/"+ (Math.ceil(Math.random()*4))+".png";   //随机产生1-4;
+                img.style.width = this.width+"px";
+                img.style.left = this.left+"px";
+                img.style.top = this.top+"px";
+
+                this.img=img;
+            }
+
+            //初始化->  将DOM元素插入到页面中
+            Leaf.prototype.init = function(){
+                document.body.appendChild(this.img);
+            }
+            //叶子下落函数：方法一：transition
+            /*
+                Leaf.prototype.down =function(){
+                    setTimeout(()=>{
+                        this.img.style.top=(bHeight-this.img.offsetHeight)+"px";
+                    },Math.random()*500)
+                 }
+            */ 
+            //方法二：
+            Leaf.prototype.down =function(){
+                //控制开始时间
+                setTimeout(() => {
+                    //控制下降速度
+                    this.timer = setInterval(() => {
+                    //判断界限
+                    if(this.img.offsetTop >= (bHeight - this.img.offsetHeight)){//若果到达边界，则停止降落；
+                        clearInterval(this.timer);
+                    }else{ //否则降落
+                        this.img.style.top = this.img.offsetTop+5+"px";
+                    }
+                }, 10);
+                }, Math.random()*500);
+            }
+
+
+            var aLeaf = [];
+            for(let i=0;i<10;i++){
+                aLeaf[i] = new Leaf();
+                aLeaf[i].init();
+            }
+
+            document.onclick =function(){
+                for(let i=0;i<aLeaf.length;i++){
+                   aLeaf[i].down();
+                }
+            }
+        </script>
+    </body>
+</html>

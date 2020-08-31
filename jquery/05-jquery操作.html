@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="jquery-1.12.4.js"></script>
+    </head>
+    <body>
+        <!-- 操作
+            1.拷贝 .clone();  
+            2.包裹：
+                wrap(); $(1).wrap(2):所有选中的这些元素1外面分别都加一层HTML元素2;
+                wrapAll(); $(1).wrapAll(2):所有选中的这些元素1作为一个整体，然后只在外面加一层HTML元素2;
+                wrapInner(); $(1).wrapInner(2):所有选中的这些元素1里面分别都加一层HTML元素2;
+            3.插入
+              从元素内部插入：
+                    后边插入：append();  
+                            $(1).append(2):再选中的这个元素1的内部的最后添加一个元素2；
+                            $(1).appendTo(2):与append相反 将这些元素1插入到选中的2中的最后；
+                    前面插入：prepend();
+                            $(1).prepend(2):再选中的这个元素1的内部的最前面添加一个元素2；
+                            $(1).prependTo(2):与prepend相反 将这些元素1插入到选中的2中的最开始；
+                    html():返回元素的html: 相当于innerHtml();
+                    text():返回文本；相当于 innerText()
+              从元素外部插入：
+                    后边插入：after();r
+                            $(1).after(2):再选中的这个元素1的外面的后边添加一个元素2；
+                            $(1).insertAfter(2):与after相反 将元素1插入到选中的2中的后边；
+                    前面插入：before();
+                            $(1).before(2):再选中的这个元素1的外面的前面添加一个元素2；
+                            $(1).insertBefore(2):与before相反 将元素1插入到选中的2中的前边；
+            4.移除  remove();
+                    empty();子元素全部清空；
+                    unwrap();删除父元素，保留本身；与wrap()相反；
+            5.替换  replaceAll();
+                    $(1).after(2):元素1替换掉元素2；
+                    replaceWith();参数与replaceAll相反，替换并且返回
+
+        i
+        -->
+        <div class="div1">哈哈哈</div>
+        <div class="div2">hello</div>
+        <ul>
+            <li class="12"><span>111</span></li>
+            <li><span>222</span></li>
+            <li><span>333</span></li>
+            <li><span>444</span></li>
+        </ul>
+        <script>
+            //clone();
+            $(".div1").clone().appendTo($(".div2"));
+
+            //wrap();
+            // $("li").wrap("<div class='list'></div>"); //有好多个
+            // $("li").wrapAll("<div class='list'></div>"); //只有一个
+            // $("li").wrapInner("<div class='list'></div>");//在里面有好多个
+
+            //插入
+            // $("ul").append("<li>5555</li>");
+            // $("ul").prepend("<li>0000</li>");
+            $("<li>5555</li>").appendTo("ul");
+            $("<li>0000</li>").prependTo("ul");
+            console.log($("li").html());  //只取第一个
+            console.log($("li").text());  //所有内容都输出；
+            // $("ul").before("<div>before</div>");
+            // $("ul").after("<div>after</div>");
+            $("<div>before</div>").insertBefore("ul");
+            $("<div>after</div>").insertAfter("ul");
+
+            //移除
+            // $("li").remove(); //移除所有的li
+            // $(".12").remove();
+            $(".12").empty();
+           
+
+            //replaceAll();
+            $("<h2>adad</h2>").replaceAll(".12");
+
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="jquery-1.12.4.js"></script>
+    </head>
+    <body>
+        <!-- 事件
+            1.绑定事件：一般都用：on();
+                        blur()：表单失去焦点//例如回车导致
+                        change():一个元素的值改变的时候将触发change事件。
+                                 此事件仅限用于<input>元素，<textarea>和<select>元素。
+                                对于下拉选择框，复选框和单选按钮，当用户用鼠标作出选择，该事件立即触发，
+                                 但对于其他类型的input元素，该事件触发将推迟，直到元素失去焦点才会触点。
+                        focus():获取焦点：但只适用于：<input>, <select>和链接元素<a href>）
+                        select():当用户在一个元素中进行文本选择时，这个元素上的select事件就会被触发。
+                                  此事件只能用在<input type="text"> 和<textarea>
+                        submit():提交时触发
+                        键盘：keydown();按下  keyup():释放按键
+                        contextmenu():鼠标右键按下
+                        事件对象：event.which:返回键盘码；
+                                 event.pageX/pageY();获取鼠标的x,y值
+                                 event.stopPropagation():阻止事件冒泡
+                        
+            2.事件委托
+                写法：$(1).on(2,3,function(){------})
+                    参数1：委托的父元素；参数2：触发的事件名称；参数3：点击哪个元素才会被委托
+                    作用：将事件绑定在父元素的身上，点击子元素的时候，会发生事件冒泡->触发父元素的点击事件
+                         在父元素的回调函数中，判断事件源e.target是不是所点击的那一个；
+        -->
+        <button>按钮</button>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>2</li>
+        </ul>
+        <a href="">afaf</a>
+        <form action="">
+            <input type="textarea">
+            <input type="checkbox" name="" id="">
+            <input type="select">
+        </form>
+        <script>
+            /*点击按钮，z在最后后生成一个li，，然后点击li,控制台输出对应的内容*/
+            //事件委托
+            $("button").on("click",function(){
+                $("ul").append("<li>"+Math.random()+"</li>");
+            })
+            //事件冒泡
+            /*
+                $("li").on("click",function(){
+                    console.log($(this).text());
+                })
+            */
+
+            //解决办法 事件委托：
+            $("ul").on("click","li",function(e){
+                console.log($(this).html());
+            })
+
+
+            $("a").focus(function(){
+                console.log("获取l");
+            })
+            $("input").change(function(){
+                console.log("获取2");
+            })
+            $("input").blur(function(){
+                console.log("blur");
+            })
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            li{
+                list-style: none;
+            }
+            body{
+                background-color: black;
+            }
+            .box{
+                width: 490px;
+                height: 170px;
+                margin: 100px auto;
+                border: 5px solid white;
+                position: relative;
+            }
+            .img-box li{
+                display: none;
+            }
+            .img-box .active{
+                display: block;
+            }
+            .btn-box{
+                position: absolute;
+                bottom: 5px;
+                width: 100%;
+            }
+            .btn-box li{
+                float: left;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: #f90;
+                color: white;
+                text-align: center;
+                line-height: 20px;
+                margin: 0 2px;
+            }
+            .btn-box .btn-left{
+                float: left;
+            }
+            .btn-box .btn-right{
+                float: right;
+            }
+            .btn-box .btn-right .active{
+                background-color: red;
+            }
+        </style>
+        <script src="jquery-1.12.4.js"></script>
+    </head>
+    <body>
+        <div class="box">
+            <div class="img-box">
+                <ul class="li-list">
+                    <li class="img-list active"><img src="image/01.jpg" alt=""></li>
+                    <li class="img-list"><img src="image/02.jpg" alt=""></li>
+                    <li class="img-list"><img src="image/03.jpg" alt=""></li>
+                    <li class="img-list"><img src="image/04.jpg" alt=""></li>
+                    <li class="img-list"><img src="image/05.jpg" alt=""></li>
+                </ul>
+            </div>
+            <div class="btn-box">
+                <div class="btn-left">
+                    <ul>
+                        <li class="arr-left">&lt;</li>
+                        <li class="arr-right">&gt;</li>
+                    </ul>
+                </div>
+                <div class="btn-right">
+                    <ul>
+                        <li class="num-btn active">1</li>
+                        <li class="num-btn">2</li>
+                        <li class="num-btn">3</li>
+                        <li class="num-btn">4</li>
+                        <li class="num-btn">5</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script>
+            /*
+                知识点：
+                1.取长度，比如li的个数：.length;
+                2触发事件.trigger();
+            */
+         var nowIndex=0;
+         var timer;
+         function shift(index){
+            $(".num-btn").eq(index).addClass("active").siblings().removeClass("active");
+            $(".img-list").eq(index).addClass("active").siblings().removeClass("active");
+         }
+         //数字按钮
+          $(".num-btn").on("click",function(){
+              nowIndex=$(this).index();
+              shift(nowIndex);
+          })
+          //箭头按钮
+          $(".arr-left").on("click",function(){
+              if(nowIndex==0){
+                nowIndex=5;
+              }
+              shift(--nowIndex);
+          })
+          //右箭头
+          $(".arr-right").on("click",function(){
+            if(nowIndex==4){
+                nowIndex=-1;
+              }
+             shift(++nowIndex);
+          })
+
+          //定时器
+          function run(){
+              timer = setInterval(function(){
+                $(".arr-right").trigger("click");//触发$(".arr-right")的点击事件；
+              },2000)
+          }
+          run();
+          $(".box").on("mouseover",function(){
+              clearInterval(timer);
+          })
+          $(".box").on("mouseout",function(){
+             run();
+          })
+
+        </script>
+    </body>
+</html>

@@ -4,8 +4,103 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <script src="jquery-1.12.4.js"></script>
     </head>
     <body>
+        <!-- 属性
+                1. .attr();
+                作用： 修改属性:$("").attr(1,2);
+                                参数1想要修改的属性；参数2 要改的名称；
+                        获得属性的返回值；$("").attr(1);
+                                        参数1 想要取得属性名字； 
+                2. .removeAttr();
+                作用：移除属性 $("").removeAttr(1); 
+                                参数1要移除的属性名；
+                3. .prop();
+                作用：也是和attr()一样修改属性，但是修改的的属性是特殊属性，属性值会随着变化的 比如：checked
+                4. .val();  
+                作用：获取value/修改值的（函数修改），也可以通过 .attr("value","----");只是比较常用，所以给单独提出来；
+            CSS
+                1.$("--").css();
+                作用：修改样式：修改一个样式：例"---","----";样式名称，具体的样式值；
+                              修改多个样式：则传对象 {样式名称："具体的样式值"，样式名称："具体的样式值"}
+                              注意：若碰到加px则写'---px',或者不用写，jquery自己处理了；
+                   若是在li集合中，则返回第一个li的样式；
+                   2.addClass();添加；
+                   3.removeClass();移除
+            尺寸：
+                1. .height();
+                2. .width();
+                        容器的值；
+                   作用：无参取值；返回值不带px，只是纯数字，但是.css("height")的返回值是带数字的；
+                         有参设值，写的时候可带可不带；
+                3.innerHeight();
+                  作用：包括padding ,不包括border;
+                4.outerHeight();
+                  作用：外部高度：padding，border,margin（可选可不选）
+            位置：
+                1. .offset();  相对于页面的位置；
+                2. .position();  相对于父元素的位置；
+                   作用：无参取值：返回是一个对象：top,left的值；
+                         有参设置：设置的时候也要对象传入{top:---;left:----}
+            -->
+        <div class="a">哈喽</div>
+        <button>anniu</button>
+        <input type="text" id="text" class="阿萨的 萨达">
+        <input type="checkbox" checked="true">
+        <input type="password" value="pass">
         
+        <span style="background-color: yellow;">hahhah</span>
+        <ul>
+            <li style="background-color: blue;"></li>
+            <li style="background-color: red;"></li>
+            <li style="background-color: green;"></li>
+        </ul>
+
+        <p style="width: 100px; height: 100px;background-color: red;" class="div0">
+            hahhah
+        </p>
+
+        <script>
+            //.attr();
+            console.log( $("div").attr("class"));  //得到；
+             $("button").on("click",function(){ 
+              $("div").attr("class","div1");       //修改；
+           });
+
+           //.removeAttr();
+           $("#text").removeAttr("class");  //移除
+
+
+           //.pop()
+           $("div").attr("class","div1");//修改、
+
+
+           //.pop()与.attr()的区别
+           //checked特性（attribute）值不会因为复选框的状态而改变，而checked属性（property）会因为复选框的状态而改变。
+           $("button").on("click",function(){ 
+            $("input:checkbox").attr("checked",!$("input:checkbox").attr("checked"));
+                //  $("input:checkbox").prop("checked", !$("input:checkbox").prop("checked")); //可多次进行点击切换
+           });
+
+
+           //.val();
+           $(":password").attr("value","word");
+           $(":password").val(["123"]); //选中value所对应的DOM元素
+           console.log($(":password").val());
+           
+           //CSS
+           console.log($("span").css("background-color"));
+           console.log($("li").css("background-color"));
+           $("span").css("border","2px solid red");
+
+
+           //尺寸
+           console.log($("p").height(),$("p").width());
+           $("p").height("500px");
+
+
+
+        </script>
     </body>
-</html>
+</html>       

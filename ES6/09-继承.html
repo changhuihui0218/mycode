@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 1.原生js下的继承 
+           继承属性：在子类构造函数中通过父类.call(this)继承属性；
+           继承方法：子类的原型对象 = new 父类；
+                    子类的原型对象.constructor = 子类；//子类的原型对象下constructor属性指挥Coder;
+        -->
+        <script>
+            function Person(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            Person.prototype.eat = function(name){
+                console.log(this.name+"正在吃。。。");
+            }
+            var person = new Person("zs",18);
+            person.eat();
+
+            //继承
+            function Coder(name,age){
+                Person.call(this,name,age);//继承属性
+            }
+
+            //继承方法
+            Coder.prototype = new Person();
+            Coder.prototype.constructor = Coder();//子类的原型对象下constructor属性指挥Coder;
+
+            var c1 = new Coder('Marry',20);
+            console.log(c1);
+            c1.eat();
+        </script>
+    </body>
+</html>

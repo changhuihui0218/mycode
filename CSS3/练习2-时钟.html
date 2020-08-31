@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            li{
+                list-style:none;
+            }
+            .box{
+                width: 300px;
+                height: 300px;
+                border: 2px dashed black;
+                margin:100px auto;
+                /* position: relative; */
+            }
+            .clock{
+                width: 300px;
+                height:300px;
+                border-radius: 50%;
+                border: 1px solid black;
+                position: relative;
+                /* transform:rotate(180deg); */
+            }
+            .clock li{
+                width: 2px;
+                height: 5px;
+                background-color: black;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                margin-left: -1px;
+                transform-origin: 1px 150px;
+            }
+           .clock li:nth-child(5n+1){
+                height:10px;
+           }
+           .clock .time-list .list{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform-origin: bottom center;
+                transform: translateX(-50%) translateY(-100%);/*对整个表盘移动180，或者向上移它本身*/
+                /* 每一个的宽度都不一样，不能用margin-left；所以用translate */
+                /* transform: translateX(-50%) rotate(180deg); */
+                /*方法三：rotate的旋转原点设在中上角*/
+           }
+           .clock .time-list .hours{
+                width: 7px;
+                height: 35px;
+                background-color: red;
+           }
+           .clock .time-list .minutes{
+               width: 6px;
+               height: 50px;
+               background-color: blue;
+
+           }
+            .clock .time-list .seconds{
+                width: 5px;
+                height: 70px;
+                background-color: yellow;
+
+            }
+            .clock .origin{
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background:black;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 问题：60个li的怎么实现？
+            1.直接通过li*60生成60个li;
+            2.通过js来控制减少代码量；
+                （1）拼字符串
+                （2） createElement，append
+            3.每隔几个控制高度：
+                 （1）.在js中直接用内联样式控制取余的方法；
+                 （2）.在css中采用li:nth-child()控制;
+            4.初始化表盘指针：
+               （1）.对整个表盘进行旋转180；
+               （2）.对这些指针向上移他自己的高度；
+        -->
+        <div class="box">
+            <div class="clock">
+                <ul class="kd"></ul>
+                <ul class="time-list">
+                    <li class="hours list"></li>
+                    <li class="minutes list"></li>
+                    <li class="seconds list"></li>
+                </ul>
+                <div class="origin"></div>
+            </div>
+        </div>
+        <script>
+            // 1.动态创建表盘；
+            var ulList = document.getElementsByClassName("kd")[0];
+            var oHours = document.querySelector(".hours");
+            var oMinutes = document.querySelector(".minutes");
+            var oSeconds = document.querySelector(".seconds");
+            var strHtml="";//注意一定要等于空，否则li的第一个元素是undefined
+            for(let i=0;i<60;i++){
+
+                /*
+                    if((i+5)%5==0){
+                        strHtml += "<li style = 'height:10px;transform:rotate("+ i*6  +"deg)'></li>";
+                    }else{
+                        strHtml += "<li style = 'transform:rotate("+ i*6  +"deg)'></li>";
+                    }
+                */
+
+                strHtml += "<li style = 'transform:rotate("+ i*6  +"deg)'></li>";
+            }
+            ulList.innerHTML = strHtml;
+
+            //2.实现指针旋转
+            function run(){
+                var timer = new Date();
+                var nowHour = timer.getHours();
+                var nowMinute = timer.getMinutes();
+                var nowSecond = timer.getSeconds();
+                oSeconds.style.transform = "translateX(-50%) translateY(-100%) rotate("+ nowSecond*6 +"deg)";
+                oMinutes.style.transform = "translateX(-50%) translateY(-100%) rotate("+ (nowMinute+nowSecond/60)*6 +"deg)";
+                oHours.style.transform = "translateX(-50%) translateY(-100%) rotate("+ (nowHour+nowMinute/60+nowSecond/3600)*30 +"deg)";
+               //注意在重写样式的时候，一定要把之间的再写一遍，要不然会覆盖；    
+            }
+            setInterval(function(){
+                run();
+            },1000)
+            run();
+        </script>
+    </body>
+</html>

@@ -18,12 +18,15 @@
             }
             .slipper-image{
                 height: 500px;
-                width: 100%;
+                width: 100%;/*如果直接定位，则脱离文档流，之前是填充为父元素的100%,脱离之后则不会了，所以自己得加一个宽度*/
                 position: absolute;
                 top: 0;
                 left: 0;
-                opacity: 0;
-                 transition: all 1s ease;
+                opacity: 0;/*实现其他图片隐藏，只显示一张图片*/
+                transition: all 1s ease;/*实现淡入淡出的效果*/
+            }
+            .slipper-image.active{
+                opacity: 1;
             }
             .slipper .i-1{
                 background-color: rgb(232, 232, 232);
@@ -34,12 +37,28 @@
             .slipper .i-3{
                 background-color: rgb(232, 232, 232);
             }
-            .slipper-image.active{
-                opacity: 1;
-            }
             .slipper-image div{
                 width: 1230px;
                 margin: 0 auto;
+            }
+            .btn{
+                width: 30px;
+                height: 5px;
+                background-color:#e0e0e0;
+              
+            }
+            .btn.active{
+                background-color:gray; 
+            }
+            .slipper-btn ul{
+                position: absolute;
+                bottom: 10px;
+                left: 600px;
+                
+            }
+            .slipper-btn li{
+                float: left;
+                margin-right:5px;
             }
         </style>
     </head>
@@ -62,23 +81,26 @@
                 </div>
             <div class="slipper-btn">
                 <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <li><div class="btn active"></div></li>
+                    <li><div class="btn"></div></li>
+                    <li><div class="btn"></div></li>
                 </ul>
             </div>
         </div>
         <script>
             var slipperImg =document.getElementsByClassName("slipper-image");
+            var btnList = document.getElementsByClassName("btn");
             var nowIndex = 0;
             setInterval(function(){
                 slipperImg[nowIndex].classList.remove("active");
-                ++nowIndex;
-                if(nowIndex==3){
+                btnList[nowIndex].classList.remove("active");
+                if(++nowIndex==3){
                     nowIndex=0;
-                    slipperImg[0].classList.add("active");
+                    slipperImg[nowIndex].classList.add("active");
+                    btnList[nowIndex].classList.add("active");
                 }else{
                     slipperImg[nowIndex].classList.add("active");
+                    btnList[nowIndex].classList.add("active");
                 }
             },2000);
         </script>

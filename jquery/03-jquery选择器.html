@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
     </head>
-    <body>
+    <body style="height:30000px">
         <div class="div1">hallow</div>
         <ul>
             <li class="aa">1</li>
@@ -18,10 +18,13 @@
             <li>0000</li>
             <li class="pre">111</li>
             <li>222
-                <ul>
+                <ul class="small">
                     <li>aaa</li>
                     <li>bbb</li>
                     <li>ccc</li>
+                </ul>
+                <ul>
+                    <li>一个元素</li>
                 </ul>
             </li>
             <li>333</li>
@@ -31,43 +34,97 @@
         <div class="div0">属性选择器</div>
         <div class="d iv0">属性选择器</div>
         <span class="div0">属性选择器</span>
+        
+         <ul class="ulList">
+             基本筛选
+             <li>序号1</li>
+             <li>序号2</li>
+             <li>序号3</li>
+             <li>序号4</li>
+             <li>序号5</li>
+         </ul>
 
+         <h4>表单选择器</h4>
+        <form action="">
+            <input type="button" value="按钮">
+            <button>按钮</button>
+            <input type="checkbox" name="zs" checked="true">
+            <input type="checkbox" checked>
+            <input type="checkbox">
+            <input type="checkbox">
+            <input type="textarea">
+            <input type="select">
+            <input type="file">
+            <input type="reset">
+        </form>
 
+        <h4>内容选择器</h4>
+        <div>john</div>
+        <div>
+            <span></span> 
+            <span>ha</span> 
+        </div>
+        <div>halou</div>
         
         <script src="jquery-1.12.4.js"></script>
         <script>
-            //     <!-- 1.基本的选择器 -->
-            $(".div1").css("background","red");//class
-            $("#bb").css("background","green");//id选择器
-            // $("li").css("background","yellow");//标签选择器
+            // <!-- 1.基本的选择器 -->
+                    // $(".div1").css("background","red");//class
+                    // $("#bb").css("background","green");//id选择器
+                    // $("li").css("background","yellow");//标签选择器
 
-             //     <!-- 2.层级选择器 -->   
-            // $("ul.big>li").css("border","2px solid black");//选中直接子代选择器
-            // $("ul.big li").css("border","2px solid black");//给定祖先的所有后代；
-            // $(".pre + li").css("border","2px double black");//在pre之后的一个兄弟元素
-            // $(".pre ~ li").css("border","2px double black");//在pre之后的所有兄弟元素
+             //<!-- 2.层级选择器 -->   
+                    // $("ul.big>li").css("border","2px solid black");//选中直接子代选择器
+                    // $("ul.big li").css("border","2px solid black");//给定祖先的所有后代；
+                    // $(".pre + li").css("border","2px double black");//在pre之后的一个兄弟元素
+                    // $(".pre ~ li").css("border","2px double black");//在pre之后的所有兄弟元素
 
-            //     <!-- 3.属性选择器 -->  
-            // $("div[class='div0']").css("background","pink");
-            // $("span[class='div0']").css("background","pink");//相等字符串
-            // $("[class!='div0']").css("background","pink");//相等字符串
-            // $("[class*='d']").css("background","pink");//给定字符串匹配
-            // $("[class~='d']").css("background","pink");//用空格符隔开给定字符
-            // $("[class$='0']").css("background","pink");//以给定字符结尾
-            // $("[class^='d']").css("background","pink");//以给定字符开始
+            // <!-- 3.属性选择器 -->  
+                    // $("div[class='div0']").css("background","pink");
+                    // $("span[class='div0']").css("background","pink");//相等字符串
+                    // $("[class!='div0']").css("background","pink");//相等字符串
+                    // $("[class*='d']").css("background","pink");//给定字符串匹配
+                    // $("[class~='d']").css("background","pink");//用空格符隔开给定字符
+                    // $("[class$='0']").css("background","pink");//以给定字符结尾
+                    // $("[class^='d']").css("background","pink");//以给定字符开始
 
 
             //     <!-- 4.子元素选择器 -->  
-
-
-
+            $(".small li:first-child").css("background","red");
+            $(".small li:last-child").css("background","green");  //:last只匹配一个元素；:last:child匹配多个元素
+            // $(".small li:nth-child(2)").css("background","yellow");  //nth-child（s索引值从1开始）
+            $(".small li:nth-child(odd)").css("background","yellow");  //nth-child（索引值也可以是odd,even           
+            $("li:only-child").css("background","pink"); //只有一个孩子才会被选中
 
             //     <!-- 5.基本筛选 -->  
+            $(".ulList :eq(2)").css("background","red"); //索引值从0开始，在集合中匹配index选中；index也可以为负值，倒数匹配
+            $(".ulList :gt(2)").css("background","green");//索引值大于index的选中，不包括该值本身
+            $(".ulList :lt(2)").css("background","yellow");//索引值小于index的选中，不包括该值本身
+ 
+           //     <!-- 6.可见性筛选 -->  
+           //:hidden  选择隐藏的选择器：隐藏的几种情况：1.display:none;
+                                        //   2.type=hidden;的表单元素；
+                                        //   3.宽高为0；
+                                        //   4.祖先是隐藏的；
+           //:visible 与hidden 相反，选择可见的；
 
-            //     <!-- 6.可见性筛选 -->  
 
             //     <!-- 7.表单选择器 -->  
+            $(":button").css("background","red"); // 选择所有按钮元素和类型为按钮的元素
+            console.log($(":checkbox"));  //选中所有复选框
+            console.log($(":checked"));   //选中所有checked：值为true的复选框；
+            $(":checked").wrap("<span></span>").parent().css("border","2px solid green");
+            $(":checked").wrap("<span></span>").parent().css({border:"2px solid green",background:"red"});
+            //disabled,enabled,所有禁用/可用的元素
+            // $(":focus").css();//获取焦点的文本框；
+            $("form :input").css("border","3px solid yellow");//选中所有表单元素，不止标签有input的  input textarea button select等； 
 
+
+            //     <!-- 8内容筛选器 -->
+            $("div:contains(john)").css({background:"red"}); // 选择所有包含指定文本的元素
+            // $("span:empty").text("哈哈哈").css({background:"black"});//
+            // $("div:has(span)").css({background:"black"});//选择元素其中至少包含指定选择器匹配的一个种元素。
+            $("span:parent").text("哈哈哈").css({background:"yellow"});//选择所有含有子元素或者文本的父级元素 与empty相反
         </script>
     </body>
 </html>

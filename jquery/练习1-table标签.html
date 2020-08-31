@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .box{
+                width: 600px;
+                height: 200px;
+                border: 1px solid black;
+                margin: 100px auto;
+            }
+            li{
+                list-style: none;
+            }
+            .nav-box{
+                height: 50px;
+                background-color: black;
+            }
+            .nav-box li{
+                float: left;
+                width: 80px;
+                height: 50px;
+                color: white;
+                text-align: center;
+                line-height: 50px;
+            }
+            .nav-box .active{
+                background-color:#e0e0e0;
+                color: black;
+            }
+            .content-box .content-list{
+                display: none;
+                margin: 30px 50px;
+            }
+            .content-box .active{
+                display: block;
+            }
+        </style>
+        <script src="jquery-1.12.4.js"></script>
+    </head>
+    <body>
+        <div class="box">
+            <div class="nav-box">
+                <ul>
+                    <li class="nav-list active">第一单元</li>
+                    <li class="nav-list">第二单元</li>
+                    <li class="nav-list">第三单元</li>
+                </ul>
+            </div>
+            <div class="content-box">
+                <div class="content-list active">
+                    <ul>
+                       <li >第一单元第一课</li>
+                       <li >第一单元第二课</li>
+                       <li >第一单元第三课</li>
+                    </ul>
+               </div>
+               <div class="content-list">
+                   <ul>
+                      <li>第二单元第一课</li>
+                      <li>第二单元第二课</li>
+                      <li>第二单元第三课</li>
+                   </ul>
+              </div>
+              <div class="content-list">
+                    <ul>
+                        <li>第三单元第一课</li>
+                        <li>第三单元第二课</li>
+                        <li>第三单元第三课</li>
+                    </ul>
+              </div>
+            </div>
+        </div>
+        <!-- 知识点
+            1.如何将原生对象转为jquery对象：$(原生对象);
+            2.遍历查找所有的兄弟元素 .sibling();  
+            3.事件处理时需要的索引值，则直接 $(this).index();  
+        -->
+        <script>
+            $(".nav-list").on("click",function(){
+                //绑定选各种的li 的 active
+                // $(this).addClass("active");
+                // $(this).siblings().removeClass("active");
+
+                //链式操作
+                $(this).addClass("active").siblings().removeClass("active");
+
+                //.content-list 显示选中的，隐藏未选中的
+                //方法1：
+                // $(".content-list").not().removeClass("active"); 
+                // $(".content-list").eq( $(this).index() ).addClass("active");
+
+                //方法2：
+                $(".content-list").eq( $(this).index() ).addClass("active").siblings().removeClass("active");
+
+
+            })
+        </script>
+    </body>
+</html>

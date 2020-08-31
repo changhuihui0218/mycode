@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body{
+                perspective: 1000px;
+                perspective-origin: 0 0;
+            }
+            .box{
+              width: 200px;
+              height: 200px;
+              border: 2px dashed black; 
+              margin:100px auto; 
+            }
+            .div1{
+                width: 200px;
+                height: 200px;
+                background-color: red;
+                /* transform: rotateY(90deg); */
+                transform: rotateY(180deg);
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 动画的属性：
+            1.rotateX()、rotateY()、rotateZ()是绕轴转的，但是看到的只是平面效果；
+            2.perspective:观察者距离平面的距离（z=0）,必须给定一定的值才能看到3d效果；
+              perspective-origin:观察者以什么角度来看这个效果，默认是中心点；
+        -->
+        <div class="box">
+            <div class="div1">
+                hello word!
+            </div>
+        </div>
+    </body>
+</html>

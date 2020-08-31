@@ -10,23 +10,19 @@
     </style>
     <script src="jquery-1.12.4.js"></script>
 </head>
-
 <body>
-
-    <div>no id</div>
-    <div id="hey">with id</div>
-    <div id="there">has an id</div>
-    <div>nope</div>
-
-    <script>
-        // Using .one() so the handler is executed at most once
-        // per element per event type
-        $("div[id]").one("click", function () {
-            var idString = $(this).text() + " = " + $(this).attr("id");
-            $(this).text(idString);
-        }); 
-    </script>
-
-        </body>
+ <ul>
+   <li>111</li>
+   <li>222</li>
+   <li>3333</li>
+   <li>4444</li>
+   <li>5555</li>
+ </ul>
+<script>
+  $("li").not().css("background","red");
+  $("li").eq(0).css("background","yellow");
+</script>
+ 
+</body>
 
         </html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="jquery-1.12.4.js"></script>
+    </head>
+    <body>
+        <!--遍历
+            1.筛选：eq();lt();gt();first();last(); 
+            2..each();遍历每一个元素并为每一个元素添加一个函数
+            3.树遍历：
+               children();遍历找到所有的孩子，；
+               find();遍历找到所有的子孙；
+               sibling();找到它的兄弟；
+               .next();紧跟着他的一个元素；
+               .nextAll();它后面的所有兄弟元素
+               .parent();找父元素元素；
+               .parents();找祖先元素；
+               .prev();紧挨着的上一个元素；
+               .prevAll()；前面的所有兄弟元素；
+         -->
+         <ul>
+             <li class="li1">1111</li>
+             <li class="li2">
+                 2222
+                 <li class="li21">2211
+                     <h2>hahah</h2>
+                 </li>
+                 <li class="li22">2233</li>
+                 <li class="li23">2244</li>
+             </li>
+             <li class="li3">33333</li>
+         </ul>
+         <div class="div1" style="height: 300px; width:300px;background-color: red;">
+             <div class="div2" style="height: 200px; width:200px;background-color: blue;">
+                 <div class="div3" style="height: 100px; width:100px;background-color: yellow;"></div>
+             </div>
+         </div>
+        <script>
+            // $("ul").children().css("border","2px solid red");
+            // $("ul").find(".li21").css("background","yellow");
+            //   $(".li1").siblings().css("background","blue");
+            //   $(".li21").next().css("background","red");
+            //   $(".li21").nextAll().css("background","red");
+                //  $(".li21").prev().css("background","red");
+                //  $(".li21").prevAll().css("background","red");
+                //  $(".li21").parent().css("border","2px solid red");
+                //  $(".div3").parent().css("border","2px solid black");//找父元素
+                //  $(".li21").parents().css("border","2px solid red");
+
+
+
+
+        </script>
+    </body>
+</html>

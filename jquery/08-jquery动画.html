@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="jquery-1.12.4.js"></script>
+    </head>
+    <body>
+        <!-- 动画效果
+            1.基础
+            .hide();隐藏
+            .show();显示
+            .toggle();切换 在显示和隐藏直接切换
+            注意：宽高透明度，一起变化
+            2.自定义
+            animate():
+            作用：实现自定义动画；
+            参数 ：参数1：是一个对象(对象里面包括自己想要改变的样式属性，)
+                   参数2: 时间间隔；默认是400（normal）,可以自己改变数值或者fast,slow
+            3.渐变
+            fadeIn(); 透明度从0--1
+            fadeOut();透明度从1-0 //变没有
+            4.滑动
+            slideDown();
+            slideUp();
+        -->
+        <div style="height: 200px; width: 200px; background-color: red;display: none;">
+        </div>
+        <button>anniu</button>
+        <script>
+            // $("button").on("click",function(){
+            //     $("div").hide();
+            // })
+            // $("button").on("click",function(){
+            //     $("div").show();
+            // })
+            // $("button").on("click",function(){
+            //     $("div").toggle();
+            // })
+
+
+            //animate();
+            /*
+                $("div").animate({
+                    width:500,
+                    height :500,
+                },1000)
+            */
+
+            //fade();
+            // $("button").on("click",function(){
+            //     $("div").fadeOut();
+            // })
+            // $("button").on("click",function(){
+            //     $("div").fadeIn();
+            // })
+
+            //slide();
+            // $("button").on("click",function(){
+            //     $("div").slideUp();
+            // })
+            $("button").on("click",function(){
+                $("div").slideDown();
+            })  
+        </script>
+    </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body{
+                perspective: 1000px;
+            }
+            .box{
+                width: 400px;
+                height: 400px;
+                border:2px dashed black;
+                position: relative;
+            }
+            .div1{
+                width: 400px;
+                height: 400px;
+                background-color: red;
+                position: absolute;
+                top:0;
+                left:0;
+                transform-style: preserve-3d;
+                transition: all 1s ease;
+                /* transform: translateZ(10px); */
+            }
+            .div2{
+                width: 400px;
+                height: 400px;
+                background-color: blue;
+                position: absolute;
+                top:0;
+                left:0;
+                transform: translateZ(-3px) rotateY(180deg) ;
+                
+            }
+            .div1:hover{
+                transform: rotateY(180deg);
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 问题：
+            perspective实现的3d效果只能对其子元素好使，对子元素的子元素不好使；所以要使子元素的子元素好使，则在该
+            子元素的父元素上加transform-style：preserve-3d;
+            2.用translateZ();来控制两个元素处于不同的空间平面；
+        -->
+        <div class="box">
+            <div class="div1">你好
+                <div class="div2">世界</div>
+            </div>
+        </div>
+    </body>
+</html>
