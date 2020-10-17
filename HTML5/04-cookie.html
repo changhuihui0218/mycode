@@ -7,6 +7,41 @@
     </head>
     <body>
         <!-- cookie
+            1.使用cookie之前需要先安装一个东西live server;
+            2.用途：（本地保存）
+                    登录了好几天不用重新登陆；
+                    推荐商品；
+            3.在js操作：利用document.cookie(可读可写)；
+            4.生效前提：必须是http:// 不能是file//所以，运行时右击live server
+                       然后是控制台----Application-----点击cookie------即可查看；
+            5.操作：
+                （1）设置cookie:document.cookie ="username=xxx";
+                               若设置多个，即用分号隔开;
+                 (2)设置过期时间（生命周期）：document.cookie="expires="+事件对象.toUTCString();
+                     时间对象先new出来，再得到日期进行相应的改动，并赋值给对应的值上面：
+                     toUTCString():  data对象------字符串;
+                （3）获取cookie:document.cookie(可读可写)，即得返回所设置的值;
+                                若是有多个值，则可以用split(";"),将其分成数组；注意得到数组的第二个值前面有空格；
+                                trim()是去掉字符串的前后空格;
+                                若只是想得到后面的具体值，在拆分一次split("=");
+                 (4)修改cookie:若cookie检测到相同属性时，后面的值会覆盖掉前面的值;
+                 (5)删除cookie:本身无删除操作，但是可以利用时间对象-1天，则复制给生命周期expires上即可删除；
          -->
+         <script>
+             document.cookie = "username=zs";//设置
+             var timer = new Date();
+             timer.setDate(timer.getDate()-1);
+             document.cookie ="age=19;expires="+timer.toUTCString();//过期时间
+             document.cookie ="age=18";  //修改
+
+             console.log(document.cookie);
+             console.log(document.cookie.split(";")[1]);
+             var arr=document.cookie.split(";");
+             console.log(arr[1]);
+             console.log(arr[1].trim());
+             console.log(arr[1].split("=")[1])
+
+
+         </script>
     </body>
 </html>

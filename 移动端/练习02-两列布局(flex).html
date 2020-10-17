@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                display: flex;
+            }
+            .div1{
+                width: 200px;
+                height: 400px;
+                background-color: red;
+            }
+            .div2{
+                flex-grow: 1;
+                height: 400px;
+                background-color: blue;
+            }
+        </style>
+    </head>
+    <body>
+          <!-- 面试题：两列布局怎么实现？（实现的方法越多越好）
+            1.利用浮动：先给左元素的的宽度固定，
+                       然后铀元素的宽度利用语法 calc( 100% -  xx px)来设置；
+            2.利用flex布局：给该两个元素的父元素设置flex,然后左元素的宽度固定，
+                           然后给右元素设置flex-grow:1;分配剩余空间；
+            3.利用margin+定位：先给两个元素加margin-left(大小为左元素的宽度)
+                              然后右元素的宽度为父元素的100%；
+                              再对左元素进行相对于父元素进行对位到左上角；
+            4.利用margin+浮动：先给两个元素加margin-left(大小为左元素的宽度)
+                              然后右元素的宽度为父元素的100%； 
+                              然后给两个元素都加浮动，
+                              但是此时屏幕放不下，所以把左元素往左串串200px,即给左元素加margin-left:           
+        -->
+            <div class="div1">left</div>
+            <div class="div2">right</div>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .can{
+                background-color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- canvas标签
+            1.是标签（像div一样），但是使用时必须要配合js使用；
+            2.使用canvas之前，先要初始化：
+                1.先获取得到她，通过js;
+                2.再通过.getContext("2d"),生成上下文;
+            3.画直线：
+                    1.初始化名.beginPath(); //告诉他开始画线了；
+                    2.初始化名.moveTo():起点; 
+                    初始化名.lineTo():终点；
+                    3.初始化名.stroke(); //开始绘制；
+                设置线的颜色：初始化名.strokeStyle='xxxxx';
+                设直线的宽度：初始化名.lineWidth=xxxx(数值型，不带px);
+             注意：一定要在绘制之前设置这些属性值；
+            4.默认效果是300x150大小；若果要改变宽和高，则只能通过标签属性来改；（img也有宽和高的标签属性）注意宽和高不带px;
+              不能在CSS选择器里改，这样会使里面的内容跟着一块压缩；
+        -->
+        <canvas class="can" width="300" height="300"></canvas>
+        <script>
+            var oCan = document.getElementsByClassName("can")[0];
+            var canContent = oCan.getContext("2d");
+
+            canContent.strokeStyle = "red";
+            canContent.lineWidth=10;
+
+            canContent.beginPath();
+            canContent.moveTo(10,10);
+            canContent.lineTo(100,100);
+            canContent.stroke();
+        </script>
+    </body>
+</html>

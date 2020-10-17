@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .box{
+                width: 400px;
+                height: 400px;
+                background: red;
+            }
+
+            /* @media (max-width: 300px){
+                .box{
+                    background-color: blue;
+                }
+            } */
+
+            /* @media (max-width: 300px) and (min-width:200px){
+                .box{
+                    background-color: blue;
+                }
+            } */
+
+            @media (orientation:portrait){
+                .box{
+                    background-color: blue;
+                }
+            }
+            @media (orientation:landscape){
+                .box{
+                    background-color: green;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 媒体查询
+            @media可以写多个，若一个media中有多个条件，则用条件运算符连接
+
+            1.写法：
+                @media (条件){
+                    选择器{
+                    }
+                }//满足条件则执行里面的内容
+            2.条件
+                1.max-width:---px;当最大宽度为---时执行条件；（即当前宽度小于----使满足条件）
+                2.（max-width:---px）and (min-width:---):当宽度介于这两者之间，则满足条件;
+                3.竖屏：orientation：portrait;
+                4.横屏：orientation：landscape;
+
+        -->
+        <div class="box"></div>
+    </body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            #app{
+                width: 500px;
+                margin: 0 auto;
+                /* background: red; */
+            }
+            ul{
+                margin-top: 20px;
+            }
+            li{
+                list-style:none;
+            }
+            .sp1{
+                display: inline-block;
+                width: 500px;
+                height: 1px;
+                background: grey;
+            }
+            .sp2{
+                float: right;
+            }
+            .div{
+                width: 500px;
+                height: 50px;
+                /* background: #000; */
+            }
+            .active{
+                background: red;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <!-- 
+            总体的思想：利用相互影响，然后true/false来坐思想转变
+            1.写线的方法：
+                <span>设置特定的宽高
+                <hr/>直接用标签直接写出来一条线
+            2.浮动写错了（右浮）
+            3.发现每个list前面都有空格，没有对齐？
+               默认的ul,li的外边距 可以用*给去掉;
+            4.怎么可以实现一点击list,，然后就自动显示勾中复选框呢？？？
+               发现他两是互相影响的，则可以采取v-model="xxxxx";  
+             例如：v-model="obj.isReds"(互相影响)
+             5.实现删除这块？
+                1.删除isRed是true的
+                2.过滤出所有的isRed是false的，赋值给原来的数组
+                    利用ES6的新语法：数组.filter(function(){return 符合条件的值})返回值是一个新数组
+             6.搜索：
+               ES6的新语法：includes():在一堆字符中找某个字符
+               利用新的属性：isShow()来增加false/true显示和隐藏，不能给删掉
+         -->
+        <div id="app">
+            <h2>todolist</h2>
+            <!-- <span class="sp1"></span> -->
+            <!-- 写斜线 -->
+            <hr/>
+            <div>
+                名称：
+                <input type="text" placeholder="请输入商品名称" v-model="proName">
+                价格：
+                <input type="text" placeholder="请输入商品价格" v-model="proPrice">
+                <button @click="add">添加</button>
+                <input type="text" placeholder="请输入搜索内容" v-model="content" @keyup="search">
+                <button @click="searchAll">搜索</button>
+            </div>
+            <div>
+                <ul>
+                    <li v-for="(obj,index) in list" @click="shiftColor(obj)" v-show="obj.isShow" >
+                        <div class="div" :class="{active:obj.isActive}">
+                            <input type="checkbox" v-model="obj.isActive" :value="obj" >{{obj.name}}
+                            <span class="sp2" @click.stop="del(index)">[X]</span>
+                            <span class="sp2">{{obj.price}}</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <button @click.stop="delAll()">删除选中</button>
+                <span>总价{{sum()}}</span>
+            </div>
+        </div>
+        <script src="vue.js"></script>
+        <script>
+            new Vue({
+                el:"#app",
+                data:{
+                    list:[
+                        {name:"苹果",price:5,isActive:false,isShow:true},
+                        {name:"apple11",price:6666,isActive:false,isShow:true}
+                    ],
+                    proName:"",
+                    proPrice:"",
+                    isActive:false,
+                    content:"",
+                    isShow:true
+                },
+                methods:{
+                    add(){
+                        this.list.push({name:this.proName,price:this.proPrice,isActive:false,isShow:true});
+                        this.proName="";
+                        this.proPrice="";
+                    },
+                    shiftColor(obj){
+                        obj.isActive=!obj.isActive;
+                    },
+                    sum(){
+                        sum=0;
+                        this.list.forEach(element => {
+                            if(element.isActive){
+                                sum+=parseInt(element.price);
+                            }
+                            // console.log(element.price);
+                        });
+                        return sum;
+                    },
+                    del(index){
+                        this.list.splice(index,1);
+                    },
+                    delAll(){
+                        // // 方法1：
+                        // this.list.forEach((obj,index) =>{
+                        //     if(obj.isActive){
+                        //         this.list.pop(obj[index]);
+                        //     }
+                        // });
+
+                        //方法二
+                    //     let arr=this.list.filter(function(obj,index){
+                    //            return obj.isActive==false;
+                    //     })
+                    //    this.list=arr;
+
+
+                        let arr=[];
+                        this.list.filter(function(obj,index){
+                            if(!obj.isActive){
+                                arr.push(obj);
+                            }
+                        })
+                        this.list=arr;
+                    },
+                    search(){
+                        this.list.forEach(obj => {
+                            if(obj.name.includes(this.content)) {
+                                obj.isShow=true;
+                            }else{
+                                obj.isShow=false;
+                            }
+                        });
+                    },
+                    searchAll(){
+                        this.list.forEach(element => {
+                           element.isShow=false;
+                        });
+                        this.list.forEach(element => {
+                            if(element.name==this.content){
+                                element.isShow=true;
+                            }
+                        }); 
+                    }                 
+                }
+                })  
+        </script>
+    </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .div1{
+                width: 200px;
+                height: 200px;
+                background:red;
+            }
+            .div2{
+                width: 100px;
+                height: 100px;
+                background:blue;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- v-on事件绑定
+            1.写法：v-on:事件名="函数名"（如果有参数要传递的话则加括号）
+                   简写成为@事件名="xxxx";
+            2.事件修饰符：
+                  .stop:阻止事件冒泡：
+                  .prevent:阻止默认行为（比如标签的跳转）
+            3.键盘修饰符：
+            .keyup:键盘的抬起；
+            .keyup.13/enter:有键盘抬起，并且抬起的键盘是回车键（ASCII码是13）
+            .keyup.tab:/.keyup.delete:/.keyup.space:
+
+            4.事件对象：event:
+             获取事件对象：如果函数没有传参数(无括号)，则方法中的实参event就是事件源，可进行操作。例如事件源 event.target
+                          弱如果函数中传参了的话，则可以使用$event进行获取；，实参中第一个参数是之前传的形参，最后一个参数才是event
+                          (形参是$event,实参是event)
+        -->
+        <div id="app">
+
+            <!-- 实现点击按钮，然后数字增加的效果 -->
+            <h2>{{count}}</h2>
+            <button v-on:click="add">add</button>
+            <!-- 如果想设置两个add,然后加不同的数，则可以进行传参，穿的参数不同，进行不同的操作 -->
+            <button @click="add(3,$event)">add(3)</button>
+            <button @click="add(5)">add(5)</button>
+
+
+            <!-- 事件修饰符 -->
+            <!-- 阻止事件冒泡(在子元素上绑定.stop) -->
+            <div class="div1" v-on:click="f1">
+                <div class="div2" v-on:click.stop="f2"></div>
+            </div>
+            <!-- 阻止默认事件的发生 -->
+             <a href="http://www.baidu.com" @click.prevent="f3">baidu</a>
+
+
+            <!-- 键盘修饰符 -->
+            <!-- <input type="text" @keyup="fn"> -->
+            <!-- <input type="text" @keyup.13="fn"> -->
+            <!-- <input type="text" @keyup.enter="fn"> -->
+            <!-- <input type="text" @keyup.left="fn"> -->
+            <input type="text" @keyup.ctrl.enter="fn">
+        </div>
+        <script src="vue.js"></script>
+        <script>
+            new Vue({
+                el:"#app",
+                 data:{
+                     count:0
+                 },
+                 methods:{
+                    add(){
+                         this.count+=1;
+                     },
+                     add(num,event){
+                         this.count+=num;
+                         console.log(event.target);
+                     },
+                     f1(){
+                        console.log("我是第v1");
+                     },
+                     f2(){
+                        console.log("我是div2");
+                     },
+                     f3(){
+                         console.log("a标签");
+                     },
+                     fn(event){
+                         console.log("keyup事件");
+                         console.log(event.target);
+                     }
+                 }
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- v-model
+            双向数据绑定的另一种方式 ：页面变了，数据变了；(只限制于表单元素)
+            其他都只能实现单项绑定：
+            1.输入框
+            2.单选框
+            3.复选框
+                v-model="名字"，是数组，多选
+                v-model="isAgree" 布尔值  勾还是没勾
+            4.下拉框
+        
+        -->
+     <div id="app">
+         <!-- 输入框 -->
+        <h2>{{msg}}</h2>
+        <input type="text" v-model="msg">
+
+
+        <!-- 单选框 -->
+        <div>
+            性别：
+            <input type="radio" v-model="sex" value="男">男
+            <input type="radio" v-model="sex" value="女">女
+        </div>
+
+        <!-- 复选框 -->
+        <div>
+            hobby:
+            <input type="checkbox" v-model="hobby" value="吃">吃饭
+            <input type="checkbox" v-model="hobby" value="睡">睡觉
+            <input type="checkbox" v-model="hobby" value="看电影">看电影
+        </div>
+         <input type="checkbox" v-model="isAgree">是否同意？
+
+         <!-- 下拉框 -->
+         <div>
+             学校：
+             <select>
+                 <option value="黑大" v-model='school'>黑大</option>
+                 <option value="北大" v-model='school'>北大</option>
+                 <option value="林大" v-model='school'>林大</option>
+
+             </select>
+         </div>
+
+
+     </div>
+     <script src="vue.js"></script>
+     <script>
+         new Vue({
+             el:"#app",
+             data:{
+                 msg:"Hello World",
+                 sex:"女",
+                 hobby:["吃"],
+                 isAgree:true,
+                 school:""
+             }
+         })
+     </script>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 历史管理：
+            1.啥是历史管理：浏览器左上方的回退按钮：<>;
+                          只有地址栏（hash值）发生变化才会出现回退按钮；
+            2.location.hash：
+                            指的是地址栏 #后面跟的东西，（随机的，但是注意，hash不带#）
+                            既可获取也可以设置值;
+                            设置时不用加“#”，自己就添加了，获取时连#获取出来了;
+             window.onhashchange =function(){}:当哈希值发生变化时会触发这个事件；
+             3.history.pushState(1,2,3);
+                            一般传两个参数就可以；
+                            参数1：随机生成的hash值；
+                            参数2：标题，但是浏览器不接受这个值，但是不传不行（可能后期维护更新会方便），所以一般传空字符串“”;
+            window.onpopstate() =function(e){}
+                            当点击回退按钮相当于出栈，捕获这个事件;
+                            e.state:记录哈希值：
+            4.二者的区别：
+            history.pushState():点击按钮不会触发事件onpopstate;
+                                地址栏不会出现#---------;
+                                刷新时界面时，hash值已经不在了;
+             location.hash:刷新时界面时，hash值还在页面;
+
+           
+            
+
+
+             [注]对象：当对象的key是变量时，则不能用obj.key;这样key就固定成一个属性了；
+                    得写成obj[key];
+
+        -->
+
+        <!-- 1.location.hash -->
+
+        <!-- <button>按钮</button>
+        <script>
+            var oBtn = document.getElementsByTagName("button")[0];
+            var obj={};
+            oBtn.onclick = function(){
+                var _random = Math.random();
+                location.hash =_random;
+                var arr=[];
+                for(let i=0;i<5;i++){
+                    arr.push(Math.floor(Math.random()*10));
+                }
+               obj[_random]=arr;//将数组与hash值联系起来；
+            }
+            window.onhashchange = function(){
+                var _hash = location.hash.slice(1); //去掉#
+                console.log(obj[_hash]);  //根据hash找数组
+            } -->
+
+
+
+           <!--2.history.pushState()-->
+            <button>按钮</button>
+        <script>
+            var oBtn = document.getElementsByTagName("button")[0];
+            var obj={};
+            oBtn.onclick = function(){
+                var _random = Math.random();
+               history.pushState(_random,"");
+                var arr=[];
+                for(let i=0;i<5;i++){
+                    arr.push(Math.floor(Math.random()*10));
+                }
+               obj[_random]=arr;//将数组与hash值联系起来；
+               console.log(arr);
+            }
+           window.onpopstate = function(e){
+               console.log(obj[e.state]);
+           }
+        </script>
+    </body>
+</html>

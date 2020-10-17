@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 组件
+        1.是可复用的vue实例，比如轮播图、选项卡、弹出框的功能固定，定义成一个组件
+        2.好处：复用，重复的工程封装成组件，方便开发和维护
+        3.有一些组件库，直接使用 登录官网可以学习到：youzan.github.io/vant/#/zh-CN
+        4.包括：html,css,js
+        5.怎么定义组件：
+            1.全局组件：
+                Vue.component(1，2)定义组件 
+                    参数1：组件名；例如：my-component
+                    参数2：是一个对象---模板{template：'xxxxxxxxxxxx',data(){},methods:{},}
+                    书写的位置：在所有的new Vue()的外面定义;在不同的实例中都可以使用，但是必须要挂载
+                    引用：直接使用标签<my-component><my-component>
+                    data必须是一个函数，return一个对象
+                        写法：
+                        data(){
+                            return {
+                                xxxx:xxxx
+                            }
+                        }
+                    为什么不用对象?
+                         使用对象时：如果调用多次的话，他们都会指向同一个对象，如果有一个改了，其他的也都会改变
+                         使用函数时：他们调用多次时每次调用都会返回一个新对象；互相都不会影响
+            一个页面可以调用多个，且互不影响；
+                    
+            2.局部组件：
+            两个vue实例都挂载了，在每一个new Vue({})里面添加一个新属性来定义组件，
+            添加一个属性：components:{
+                                    'my-component:'{
+                                        template:'xxxxx'
+                                        data(){
+                                           return{xxxx}
+                                        }
+                                    }
+                                }
+            只能在一个内部使用
+        注意：
+            有时候template:'xxxxx'太多了，
+                1.可以将内容提到前面写在标签里<template>xxxxx</template>，
+                2然后利用选择器挂在vue的属性上面；template:'xxxx'
+        组件的通信：
+            父组件----调用子组件时传参props
+            子组件----父组件时传参$emit(1,2)
+        可以传参，props
+                1.在标签中写参数（叫啥都行）例如name='xxxx'
+                2.在vue中增加一个属性 props['xxx'](接收调用参数的数组)
+                3.利用插值法在页面显示显示{{}}
+            props的写法：
+                1.props；['xxx','xxxx']:接受值
+                2.props:{
+                    xxxx1:xxxx2     //xxxx1属性名称，xxxx2:限制的类型  
+                 }
+                3.props:{
+                    xxxx:{
+                        type:String,
+                        default:'xxxxx'  //既限制了类型也给出了默认值
+                        required:true    //不允许为空
+                    }
+                  }
+                ????:name='0'为什么时数字型   
+
+             子组件----父组件时传参
+                  1.在你想要做什么操作时获取值时，则在对应的方法中添加 this.$emit(1,2)
+                        参数1：自定义的事件，参数2：想要回传的值；
+                  2.在你调用子组件的地方添加一个事件 @参数1='xxx' (注意此时的xxx方法不能带括号)
+                  3.在对应父组件所应的methods，实现该方法：xxx(val){
+                        对val传过来的值，即上面的参数2
+                  }
+    -->
+    <div id="app">
+        <my-component name='ai coding' content='it 培训'></my-component>
+        <my-component  content='it 培训'></my-component>
+        <hr>
+        <my-component name='四福科技' content='xxxxxxxxx' @fn='fn1'></my-component>
+    </div>
+    <div id="app2">
+        <!-- <my-component></my-component> -->
+    </div>
+    <template id='temp'>
+        <!-- <div><h2>{ai coding}</h2><button>click</button></div> -->
+        <div><h2>{{name}}{{count}}</h2>
+        <p>{{content}}</p>>
+        <button @click='change()'>click</button>
+        </div>
+    </template>
+    <script src="vue.js"></script>
+    <script>
+        //定义一个全局组件
+            /*
+                Vue.component('my-component',{
+                    template:'<h2 @click="change()">{{msg}}{{count}}</h2>',
+                    data(){
+                        return{
+                            msg:'love ai coding',
+                            count:0
+                        }
+                    },
+                    methods:{
+                        change(){
+                           this.count++;
+                        }
+                    }
+                })
+
+                new Vue({
+                    el:'#app'
+                })
+                new Vue({
+                    el:'#app2'
+                })
+            */
+        //定义局部组件
+         new Vue({
+             el:'#app',
+             components:{
+                'my-component':{
+                    template:'#temp',
+                    data(){
+                        return{
+                            count:0
+                        }
+                    },
+                    // props:['name','content']
+
+                    // props:{
+                    //     name:String,
+                    //     content:String
+                    // }
+
+                    props:{
+                        name:{
+                            type:String,
+                            default:'haha'
+                        },
+                        content:String
+                    },
+                    methods:{
+                        change(){
+                            this.count++;
+                            this.$emit('fn','想要传回的值')
+                        }
+                    }
+                }
+            },
+            methods:{
+                fn1(val){
+                    console.log(val);
+                }
+            }
+         })
+    </script>
+
+</body>
+</html>

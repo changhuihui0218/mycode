@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            <div>是否需要额外付费设施<input type="checkbox" v-model="IsChoose"></div>
+            <ul>
+                <li v-show="IsChoose" v-for="obj in list1" v-model="list2" >
+                    {{obj.name}}({{obj.price}})
+                    <input type="checkbox" v-model="list2" :value="obj">
+                </li>
+            </ul>
+            <div>订单费用信息
+                <ul>
+                    <li v-for="obj in list2">{{obj.name}}({{obj.price}})</li>
+                </ul>
+            </div>
+            <div>
+                总金额{{sum()}}
+            </div>
+        </div>
+        <script src="vue.js"></script>
+        <script>
+            new Vue({
+                el:"#app",
+                data:{
+                   list1:[
+                       {name:"WIF",price:50},
+                       {name:"沙发",price:100},
+                       {name:"电脑",price:500}
+                   ],
+                   IsChoose:false,
+                   list2:[{name:"群力花园豪华型",price:400}],
+                },
+                methods:{
+                //     sum(){
+                //         let sum=0;
+                //         for(let i=0;i<this.list2.length;i++){
+                //             sum+=this.list2[i].price;
+                //         }
+                //         return sum;
+                //     }
+
+                sum(){
+                    let sum=0;
+                    this.list2.forEach(element => {
+                        sum+=element.price;
+                    });   
+                    return sum;
+                }
+                }
+            })
+        </script>
+    </body>
+</html>

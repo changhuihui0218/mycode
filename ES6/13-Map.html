@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- Map
+            1.类似于对象，也是键值对的形式；
+            2.不同于对象:键的值不一定是字符串，也可以是其他形式，比如也可以是一个对象：
+                set(key val);
+                get(key);
+                size();返回总数；
+                has(key);
+                delete(key);
+                clear();     
+            3.遍历操作：与Set()一模一样：
+        -->
+        <script>
+            let m1=new Map();
+            let obj={
+                name:"zs"
+            }
+            m1.set(obj,"xxx");
+            m1.set('a','222');
+            m1.set('c','333');
+            console.log(m1);
+            console.log(m1.get(obj));
+            console.log(m1.has(obj));
+
+
+               //遍历
+            for(let item of m1.keys()){
+                console.log(item);
+            }
+            for(let item of m1.values()){
+                console.log(item);
+            }
+            for(let item of m1.entries()){
+                console.log(item);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <style>
+        li{
+            list-style: none;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 5px;
+        }
+    </style>
+    <body>
+        <!-- dataset
+            html5提供了一个可以标识每一个标签上存储得变量值
+            1.元素上加data-变量名="xxxxx";
+            2.获取这个属性：
+                    getAttribute;
+                    this.dataset返回是个对象：因为data-可以多个;
+                    取具体的值：this.dataset.变量名
+        -->
+        <ul>
+            <li data-id="1">1</li>
+            <li data-id="2">2</li>
+            <li data-id="3">3</li>
+        </ul>
+        <script>
+            var aLi =document.getElementsByTagName("li");
+
+            for(let i=0;i<aLi.length;i++){
+                aLi[i].onclick =function(){
+                    console.log(this.dataset.id);
+                }
+            }
+        </script>
+    </body>
+</html>

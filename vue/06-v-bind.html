@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .red{
+                background: red;
+            }
+            .blue{
+                color:blue;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- v-bind
+           1.动态绑定属性：v-bind:id="myId";
+           2.动态绑定class:以类的方式：
+               1.对象： v-bind:class="{class名：值（t/f,class名：值（t/f）}"
+               2.数组 v-bind:class="[类名1，类名2]"，类名的具体值在data中设置
+            3.动态绑定样式：v-bind:style="名字"，然后里面的具体值在data中设置            
+           3.简写： 直接：id/:class
+        -->
+        <div id="app">
+            <h2 v-bind:id="myId">hahha</h2>
+            <h2 v-bind:class="{red:isRed,blue:isBlue}" @click="change">hehe</h2>   
+            
+            <!-- 简写 -->
+            <h2 :class="[a,b]">hehe</h2>   
+
+            <div :style="styleObject"></div>
+        </div>
+        <script src="vue.js"></script>
+        <script>
+            new Vue({
+                el:"#app",
+                data:{
+                    myId:"div1",
+                    isRed:true,
+                    isBlue:false,
+                    a:"a",
+                    b:'b',
+                    styleObject:{
+                        width:'100px',
+                        height:'100px',
+                        background:'red'
+                    }
+                },
+                methods:{
+                    change(){
+                        this.isRed=!this.isRed;
+                    }
+
+                }
+            })
+        </script>
+    </body>
+</html>

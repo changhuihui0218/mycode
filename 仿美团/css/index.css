@@ -1,0 +1,38 @@
+.header-box{
+    height: 1rem;
+    background-color: #1C1B20;
+    color: #fff;
+    display: flex;
+}
+.header-box .address-box{
+    width: 2.96rem;
+    height: 0.63rem;
+    line-height:1rem;
+    overflow: hidden;
+    margin-left: 15px;
+}
+.header-box .search-box{
+    flex-grow:1;
+    background: #fff;
+    width:4.04rem;
+    height:0.6rem;
+    border-radius: 0.3rem;
+    margin: 10px 10px 5px 10px;
+}
+.search-box .iconfont{
+    float: left;
+    color: #1C1B20;
+    margin: 7px 2px 6px 11px;
+}
+.search-box input{
+    float: left;
+    width: 2rem;
+    margin-top: 8px;
+    outline: none;
+    border: none;
+    text-align: center;
+    overflow: hidden;
+    color: -internal-light-dark(rgb(84, 84, 84), rgb(170, 170, 170));
+    font: 400 13.3333px Arial;
+    text-overflow: ellipsis;
+}

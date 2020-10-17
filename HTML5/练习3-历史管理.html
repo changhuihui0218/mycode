@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            li{
+                list-style:none;
+            }
+            .box{
+                width: 300px;
+                height: 50px;
+                background-color: grey;
+                margin: 50px 50px;
+            }
+            li{
+                float: left;
+                width: 100px;
+                height: 50%;
+                text-align: center;
+                line-height: 50px;;
+            }
+            .active{
+                background-color: black;
+                color: cornsilk;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <ul>
+                <li class="active" data-name="first">first</li>
+                <li data-name="second">second</li>
+                <li data-name="third">third</li>
+            </ul>
+        </div>
+        <script>
+            var aLi = document.getElementsByTagName("li");
+           
+
+          
+          for(let i=0;i<aLi.length;i++){
+              aLi[i].onclick = function(){
+                //   var _text = this.innerText;
+                var _text= this.dataset.name;
+                  location.hash=_text;
+                  for( let j=0;j<aLi.length;j++){
+                    aLi[j].classList.remove("active");
+                  }
+                  this.classList.add("active");
+              }
+          }
+
+          window.onhashchange = function(){
+              var _hash=location.hash.slice(1);
+              for(let i=0;i<aLi.length;i++){
+                if(aLi[i].innerText == _hash){
+                    for( let j=0;j<aLi.length;j++){
+                    aLi[j].classList.remove("active");
+                  }
+                    aLi[i].classList.add("active");
+                    // aLi[i].className="active";
+                }
+              }
+          }
+
+
+
+
+           
+        </script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1599894639280'); /* IE9 */
+  src: url('iconfont.eot?t=1599894639280#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAOkAAsAAAAAB4QAAANWAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqCaIJlATYCJAMMCwgABCAFhG0HORuuBiMR5nPtQ/aXB9xh+hcUBEoU0VE8U6lbEvWd0Jp2Z6LRPo/4f7xiI1wLB/99BF9jv31390VRSeKNjE8niSYiJUAkaaRUOqEQGt0z+f+9Xb69vwFcNHEHHVz5bxm4lNCCqFydVO1eNH0SAAnoKb45V9UDChuhRnL2ARXaYdp1lF2WPTWAwMC/7BKM9nkupzctgfmBchlr2d5+1AswDijQPXBN0QJJ0BvGLmiJ2wk0zYpH7O+vD+WuMPsF4tqaRLlnHEpDdagL1YqpRTxQUU93voP74PvxlxruJJXM3OmgZJerXBp95hx1cDOdD2wWGWtAIS4rA8eAotQapKkayObiqiKkqaIfKDRd1frDIwmiyqxsgyWUTnxyFIlxqLrqrTKoooZrAK9g8oa9tyIN9AWE9+h4eL7OpNbrsVar0hiU6+eDlxVao2rmJExvxjqdWqNRdRzdvQ493xyARqNcfbk9xJ7dZJ0VDakm9ZOeiHTKitMO6RWqmaGtjgLNoPpFl6rT4SO9VD+ketamaNuV+5pNqrDKIHTvIHcZeseNkzRD7mReZBAVVhLHKUdICpI5l5G1j3b70MqCK0jR0PnFEGuQdXFxMhpXf9WX3fdaFgccCrMJR68oWIpbJjiYS61SCgMH2JRM4GFpB8F1dSfJXVK062R2EbQxzEJn3GWcu0g2mlZQW9sXBmEbOeyo8dyovyR/L5INY1G5e/n5/7mR4+zIr7w07RuPYku76ag8APTkl27Ru1r/V7/xvFMn0Trzv+5VwEczFAR7iu5l6hJM+WeUHeuKpjaduSgKR2Fks00u9y2DMm70P2phkG24ZeTufaGeUTIkNTPI6ubIwq6homUDVXVbaFolnN0ypBKQKA2s6AEI/faQdL0h6/dOFtaKilG/qOoPhKZDImjJloVYtbMNYyKYQ/oDm1GrbbfMwuobmqFOOK0O+C/k3kbBd7x89oAt8hQj+rcJRDRopgb2YDesa4KOqcRMnEKkC11XV13JyahRMxvGRDCH9Ac2o1Z7zWVW+PwNzVAn3MCpSr6Qe9s++I7XgTwY2k6cW9mnf5tARINmamAPfFhbKYKuulOJmTjFgEQXuqiR7mpwljc177cFAE/m2ihS5ChGV/ZfWH+UFcl3aJUCAAA=') format('woff2'),
+  url('iconfont.woff?t=1599894639280') format('woff'),
+  url('iconfont.ttf?t=1599894639280') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1599894639280#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-dizhi1:before {
+  content: "\e6d1";
+}
+
+.icon-chaxun:before {
+  content: "\e65d";
+}
+

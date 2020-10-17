@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- vue
+            1.什么是vue
+                iQuery是一个类库，vue是一个框架；进行双向数据绑定；
+                数据发生变化，页面自动发生改变,反之也成立
+            2.vue如何进行安装
+                先下载vue.js,新建一个文件夹放到里面;
+                然后在使用的界面中先用<script>引入vue.js文件，
+                然后在<script></script>中写需要的js代码了;
+            3.vue的结构：
+                在script中，新建new Vue({});（像一个对象一样）
+                然后里面包括三部分：
+                    el:挂载元素（只能在选定的选择器下才能好使）
+                        必须先进行挂载，否则不好使
+                    data:({}):数据部分
+                    methods:({}):方法部分（一般用于事件绑定）
+            4.vue的用法：
+                {{msg}}:文本插值：在网页中显示data的值
+                想要获取data里的具体值值：this.msg;
+                想要获取整个data：vm.$data；
+                想要获取el:vm.$el;
+         -->
+        <div id="app">
+            <h2>{{msg}}</h2>
+        </div>
+        <script src="vue.js"></script>
+        <script>
+           let vm = new Vue({
+                el:"#app",
+                data:({
+                    msg:"Hello Word!",
+                    a:"哈哈哈哈"
+                }),
+                methods:({
+
+                })
+
+            })
+            console.log(vm.msg);
+            console.log(vm.$el);
+            console.log(vm.$data);
+        </script>
+    </body>
+</html>

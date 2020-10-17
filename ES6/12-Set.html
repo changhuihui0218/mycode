@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- Set
+            1.类似于数组
+                创建：let s= new Set();
+                   s1.add(xxx);添加值
+                   也可以直接在（）中传数组：
+                   s1.delete(xxx);删除某一个值
+                   a1.has(xxx);是否存在，返回布尔值
+                   s1.clear();清除数组
+                   s1.size();求长度
+            2.但是成员的值是唯一的,利用这个性质可进行数组去重
+               与数组的区别：set内部不能重复，成员唯一，如果有，会重复;
+            3.实现数组去重的方法：(js)
+              方法一：利用对象的属性名唯一，来对数组进行遍历，然后没有出现过的添加到新数组中，出现过的直接跳过；
+              方法二：利用Set();
+                    1.先利用new Set()进行去重；
+                    2.再利用...进行转换变成数组
+            4.遍历操作：
+               .keys()：返回键名的遍历器
+               .values()：返回键值的遍历器
+               .entries()：返回键值对的遍历器
+                .forEach()：使用回调函数遍历每个成员 返回[key,value]
+        -->
+        <script>
+            let s1 =new Set();
+            let arry=[3,4,5,2,2,2,2];
+            let s2 =new Set(arry);
+            s1.add(1);
+            s1.add(2);
+            console.log(s1,s2);
+            console.log(s1.has(1));
+            s1.delete(1);
+            console.log(s1.has(1));
+
+
+            //数组去重
+            function f1(arry){
+                let newArray=[];
+                var object={};
+                for(let i=0;i<arry.length;i++){
+                    let val=arry[i];
+                    if(object[val]){
+                        object[val]=object[val]+1;
+                    }else{
+                        object[val]=1;
+                        newArray.push(val);
+                    }
+                }
+                console.log(object);
+                return newArray;
+            }
+            console.log(f1(arry));
+
+
+            //方法二：数组去重
+            let array=new Set(s2);
+            console.log(array);//类数组
+            console.log([...array]);
+            
+
+            //遍历
+            //因为set的结构只有键值，没有键名，所以keys(),方法和values()方法完全一致
+            for(let item of s2.keys()){
+                console.log(item);
+            }
+            for(let item of s2.values()){
+                console.log(item);
+            }
+            for(let item of s2.entries()){
+                console.log(item);
+            }
+        </script>
+    </body>
+</html>

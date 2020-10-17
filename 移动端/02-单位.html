@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+
+            /* 设置一个元素将屏幕充满
+                1.定位:position:fixed;top:0;left:0;right:0;bottom:0;
+                2.vw/vh;width: 100vw;height: 100vh;
+             */
+            /* .box{
+                position: fixed;
+                top:0;
+                left:0;
+                right:0;
+                bottom: 0;
+
+                width: 100vw;
+                height: 100vh;
+                background-color: red;
+            } */
+
+            /* em */
+            /* .div{
+                font-size:20px;
+                width: 10em;
+                height: 10em;
+                background-color: red;
+            }
+            .box{
+              font-size: 10px;
+            } */
+
+
+            /* rem */
+
+             html{
+                font-size:20px;             
+            }
+            .box{r
+                width: 10rem;
+                height: 10rem;
+                background-color: red;
+            } 
+
+        </style>r
+    </head>
+    <body>
+        <!-- 单位
+            1.px;
+            2.deg;
+            3.vw,vh;
+                vw:视口宽度：viewport-width
+                vh:视口高度：viewport-height
+                取值：把屏幕分成100份所占的比例(相当于百分比)
+                        范围0-100;
+            4.em:相对单位,相对于当前元素或者祖先元素得font-size设定：
+                  最后呈现的宽度:自己的em x font-size的大小;
+                  注：如果一直找都没有这个font-size,则采取浏览器的默认值16px;
+                     如果当前元素，父元素都存在font-size，则采取当前元素的值;
+            5.rem:相对于html（根元素）的font-size;
+                  注：若不进行特殊设置，则浏览器的默认形式为16px;
+                     r----root;
+         -->
+
+         <div class="box">
+             <div class="div"></div>
+         </div>
+    </body>
+</html>

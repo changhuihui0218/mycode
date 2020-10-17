@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+        <meta name="viewport" content="width=320">
+        <title>Document</title>
+        <style>
+            .box{
+                width: 300px;
+                height: 300px;
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <!--    
+            常见开发项目类型：
+            1.mobile web:web app----在手机端打开的浏览器;
+            2.pure native:原生移动端开发（只有手机在软件商店里下载安装后才可以使用）
+                          安卓 Java开发 ios用oc开发：
+                          开发出来的app得上架到软件商店，需要花时间进行审核
+            3.hybrid native:混合app
+                            在原生应用里访问页面（需要webview插件）
+                            微信小程序开发会使用到;
+            频繁的更新广告页面(双11活动等等)，则做成一个web嵌入到原生app中;
+
+         -->
+        <!-- viewport:针对移动端进行开发;
+             <meta> 对当前页面进行初始化设置
+             <meta name="viewport" content="width=device-width（设备宽度）, initial-scale=1.0（缩放比例）">
+             还可以设置禁止缩放等属性;
+             不同设备的尺寸大小不一样，则显示元素的大小宽度也不同;这需要根据设备宽度调节width;
+         -->
+         <div class="box"></div>
+    </body>
+</html>

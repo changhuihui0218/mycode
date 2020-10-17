@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 条件渲染
+            v-if="xxxx";
+            v-else="xxxx";
+            v-else-if="xxxxx";
+            
+            注意：v-show和v-if都是用来显示隐藏的
+                区别是v-if:如果条件不成立直接元素不存在
+                     v-show:如果条件不成立，是通过display:none:来隐藏的，元素存在；
+            如果说是对某一个元素要进行频繁的显示隐藏时，用v-show性能会比较好一点：
+        -->
+        <div id="app">
+            <!-- 判断条件是布尔类型 -->
+            <h2 v-if="isLogin">hello world</h2>
+            <h2 v-else>请登录</h2>
+
+            <!-- 判断条件是== -->
+            <p v-if="x == 'a'">aaa</p>
+            <p v-else-if="x=='b'">bbb</p>
+            <p v-else-if="x=='c'">ccc</p>
+            <button @click="change">change</button>
+
+            <!-- v-show -->
+            <span v-show="isShow">hahhah</span>
+
+        </div>
+        <script src="vue.js"></script>
+        <script>
+            new Vue({
+                el:"#app",
+                data:{
+                    isLogin:false,
+                    x:'a',
+                    isShow:false
+                },
+                methods:{
+                    change(){
+                        this.x="b";
+                    }
+               }
+            })
+        </script>
+    </body>
+</html>

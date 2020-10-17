@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- vue中常用的指令
+            1.v-html:把数据会当成标签来解构;
+              v-text:直接把数据当作是字符串，直接输出
+              {{msg}}:与v-text不同的是，它是先显示{{msg}},等到代码运行到下面取到msg的时候，会替换掉{{msg}};
+        -->
+        <div id="app">
+           <h2>{{msg}}</h2>
+           <h2 v-html="msg"></h2>
+           <h2 v-text="msg"></h2>
+        </div>
+       <script src="vue.js"></script>
+       <script>
+           new Vue({
+               el:"#app",
+               data:{
+                   msg:"<a href='#'>hello World</a>"
+               }
+           })
+       </script> 
+    </body>
+</html>

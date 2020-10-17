@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- v-for
+            循环生成谁，就在谁身上写v-for="obj in list";
+             例：<li v-for="obj in list">{{obj}}</li>
+                    obj指的是循环数组中得到的每一个元素；
+                    list:循环数组
+        -->
+        <!-- 例子:点击按钮，然后生成一个列表 -->
+        <div id="app">
+            <button @click="add">click</button>
+            <ul>
+                <li v-for="obj in list">{{obj}}</li>
+            </ul>
+        </div>
+        <script src="vue.js"></script>
+        <script>
+            new Vue({
+                el:"#app",
+                data:{
+                    list:["zhangsan","lisi","wangwu"]
+                },
+                methods:{
+                    add(){
+                        this.list.push("zhaoliu");
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--form表单元素<form></form>
+        1.input标签
+            type="text":输入框
+                        1.新属性：placeholder:(显示默认字)
+                        2.一般都要写name="xxxxx",可能一个表单会有多个input，用name来区分；
+                        3.如果name="username",则输入时则会有提示，如不想要提示 autocomplete="off"即可；有则on;
+                        4.autofocus 选中输入框；
+            type="password":密码框
+            type="date":选择日期，一般自己写，因为对应的浏览器不同 date所呈现的样式不同；
+            type="button":点击按钮无反应；
+            type="submit";提交按钮，提交username=xxx;
+            type="email":点击提交，则会验证邮件的格式是否正确；
+            type="url":点击提交，验证网址的格式是否正确；
+            type="number":只能输入数字，不能输入英文字母；
+        2.多媒体表单：
+          音频:<audio src="xxxxxxxxxx.mp3" controls><audio>
+          视屏：<video src="xxxxxxxxxx.mp4" controls>
+          只有添加了controls才会好使；
+    -->
+</body>
+       <form action="">
+           <input type="text" name="username" placeholder="请输入用户名" autocomplete="off" autofocus>
+           <input type="date">
+           <input type="button" value="提交">
+           <input type="submit">
+           <input type="email">
+           <input type="url">
+           <input type="number">
+       </form>
+       <audio src="" controls></audio>
+       <video src="" controls></video>
+        
+</html>

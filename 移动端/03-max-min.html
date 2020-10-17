@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .box{
+                /* width: 400px;  */
+                max-width: 400px;     
+                min-width: 200px;  
+                height: 400px;
+
+                /* max-height: 400px; */
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- max-min属性
+            1.作用：控制当前元素的缩放范围:
+                max-width：最大宽度;
+                min-width:最小宽度;
+            2.与正常的区别：
+              正常的width/height:屏幕缩小时（不是页面比例发生变化，是另一个元素逼近导致宽度缩放)，宽度不会发生变化;会出现进度条
+              max-width：屏幕缩小时,宽度会跟着缩小，最大的范围是这个：
+              min-width：屏幕缩小时,宽度会跟着缩小,但是到达这个最小限度的时候，会停止缩小，屏幕宽度不变，出现滚动条
+            3.用途：
+                当移动端出现屏幕大小尺寸不一样的时候，可以用它来得到一个范围，使不同的手机都可以使用
+            -->
+        <div class="box"></div>
+    </body>
+</html>

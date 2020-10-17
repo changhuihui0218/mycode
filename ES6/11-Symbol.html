@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- Symbol ES6出现的新的基本数据类型
+            1.数据类型分为：
+                基本：String number boolean undefined none symbol
+                引用：数组，对象（函数）
+            2.表示独一无二的值，可保证不会与其他属性名发生冲突
+              let name=Symbol(); 
+              object[name]="xxx"
+            3.不会出现在for-in,for-of循环中； 
+            
+
+         -->
+        <script>
+            let s1=Symbol();
+            console.log(s1);//但是不会显示，就只是表示独一无二的值
+
+            var object ={
+                name:'zs'
+            }
+            object[Symbol()]="xxxx";
+            console.log(object);
+
+            for(var key in object){
+                console.log(object[key]);
+            }
+        </script>
+    </body>
+</html>
