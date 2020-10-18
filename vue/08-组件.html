@@ -45,6 +45,7 @@
             有时候template:'xxxxx'太多了，
                 1.可以将内容提到前面写在标签里<template>xxxxx</template>，
                 2然后利用选择器挂在vue的属性上面；template:'xxxx'
+        面试的重点
         组件的通信：
             父组件----调用子组件时传参props
             子组件----父组件时传参$emit(1,2)
@@ -53,7 +54,7 @@
                 2.在vue中增加一个属性 props['xxx'](接收调用参数的数组)
                 3.利用插值法在页面显示显示{{}}
             props的写法：
-                1.props；['xxx','xxxx']:接受值
+                1.props；['xxx','xxxx']:                               接受值
                 2.props:{
                     xxxx1:xxxx2     //xxxx1属性名称，xxxx2:限制的类型  
                  }
@@ -75,7 +76,7 @@
                   }
     -->
     <div id="app">
-        <my-component name='ai coding' content='it 培训'></my-component>
+        <my-component name=0 content='it 培训'></my-component>
         <my-component  content='it 培训'></my-component>
         <hr>
         <my-component name='四福科技' content='xxxxxxxxx' @fn='fn1'></my-component>

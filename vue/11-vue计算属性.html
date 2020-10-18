@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 计算属性
+            computed:{
+                //是一个属性不是方法，所以调用时不能加括号
+                xxxxx(){
+                    return xxxxxxxxxxxxxx
+                }
+            }
+            调用 直接{{xxxxx}};
+            写法：和data并排写
+            computed和methods的区别：
+                computed:计算属性的结果会被缓存，除非依赖的响应式property变化才会重新计算
+                methods:在重新渲染的时候，函数总会重新调用执行
+        -->
+        <div id="app">
+            <!-- 字符串反转
+                split()  把字符串以空格分割成数组['hello','world','!']
+                -->
+            <h1>{{msg}}</h1>
+            <h1>反转后：{{msg.split(" ").reverse().join(" ")}}</h1>
+            <h1>反转后：{{reverseStr(msg)}}</h1>
+            <h1>计算属性反转后：{{reverseMsg}}</h1>
+        </div>
+        <script src="./vue.js"></script>
+        <script>
+            new Vue({
+                el:"#app",
+                data:{
+                    msg:'hello world !'
+                },
+                methods:{
+                    reverseStr(msg){
+                        return msg.split(" ").reverse().join(" ")
+                    }
+                },
+                computed:{
+                    //是一个属性
+                    reverseMsg(){
+                        return this.msg.split(" ").reverse().join(" ");
+                    }
+                }
+
+            })
+        </script>
+    </body>
+</html>

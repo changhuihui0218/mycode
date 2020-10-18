@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .dialog-box{
+                position: fixed;
+                top:0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: rgb(0,0,0,0.5);
+            }
+            .dialog-content{
+                width: 300px;
+                height: 200px;
+                background-color: seashell;
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+            }
+            .x{
+                float:right;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 1.slot:插槽
+                    有些样式很多，可以写在我们调用组件的标签之间<>my-component></my-component>，
+                    然后在<template>中哪里显示，就写<slot><slot>显示；
+                    若想在不同的地方显示不同的内容？
+                        在<my-component>中的<div slot="xxxx"></div>
+                        在调用slot时<slot name="xxxx"><slot>
+             2.label标签：
+                <label for="xxx">xxxxx<label>
+                label上面有一个for属性，与input的id属性相对应，点击label就会有所对应的input获取焦点：
+        -->
+        <div id="app">
+            <button @click="change()">show</button>
+            <my-dialog title="登录" v-if="isShow" @show="fn">
+                <div slot="slot1">
+                    <div>
+                        <label for="name">用户名</label>
+                        <input id="name" type="text"/>
+                    </div>
+                    <div>
+                        <label for="password">密码</label>
+                        <input id="password" type="text"/>
+                    </div>
+                    <div>
+                        <button>登录</button>
+                    </div>
+                </div>
+                <div slot="slot2">
+                    <div>我是底部</div>
+                </div>
+            </my-dialog>
+        </div>
+        <template id="temp"> 
+            <div class="dialog-box">
+                <div class="dialog-content">
+                    <div>{{title}}
+                         <span class="x" @click="cancel()">【x】</span>
+                     </div>
+                    <hr>
+                        <slot name="slot1"></slot>
+                    <hr>
+                    <div>
+                        <slot name="slot2"></slot>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <script src="vue.js"></script>
+        <script>
+            new Vue({
+                el:'#app',
+                data:{
+                    isShow:false
+                },
+                methods:{
+                    change(){
+                        this.isShow=true;
+                    },
+                    fn(){
+                        this.isShow=false;
+                    }
+                },
+                components:{
+                    'my-dialog':{
+                        template:'#temp',
+                        props:['title'],
+                        data(){
+                            return{
+
+                            }
+                        },
+                        methods:{
+                            cancel(){
+                                this.$emit('show');
+                            }
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

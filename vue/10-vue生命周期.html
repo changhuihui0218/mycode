@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- vue生命周期
+            每个Vue实例在被创建时都要经过一系列的初始化过程，需要设置数据监听
+            
+
+            刚创建时就有这四个：
+                beforeCreate()；
+                created();
+                beforeMount();
+                mounted()；
+            更新时：
+                beforeUpdate();
+                updated();
+                beforeDestroy();
+                destroyed();
+                在点击销毁的函数中添加该语句表示销毁：this.$destroy();
+            写法：直接和data:{}并排写;
+
+        -->
+            <div id="app">
+                {{count}}
+                <button @click="add()">add</button>
+                <button @click="del()">销毁</button>
+            </div>
+            <script src="./vue.js"></script>
+            <script>
+                new Vue({
+                    el:"#app",
+                    data:{
+                        msg:"hello~",
+                        count:0
+                    },
+                    //组件刚被创建，啥都还没有
+                    beforeCreate(){
+                        console.log('beforeCreate' ,this.$el,this.$data)
+                    },
+                    //属性已绑定，但是DOM还未生成，$el属性还不存在
+                    created(){
+                        console.log('created' ,this.$el,this.$data)
+                    },
+                    //挂载之前，DOM已经有了，但是还没有挂上
+                    beforeMount(){
+                        console.log('beforeMount' ,this.$el,this.$data)
+                    },
+                    //挂载完成
+                    mounted(){
+                        console.log('mounted' ,this.$el,this.$data)
+                    },
+                    beforeUpdate(){
+                        console.log(' beforeUpdate' ,this.$el,this.$data)
+                    },
+                    updated(){
+                        console.log('updated' ,this.$el,this.$data)
+                    },
+                    beforeDestroy(){
+                        console.log('beforeDestroy' ,this.$el,this.$data)
+                    },
+                    destroyed(){
+                        console.log('destroyed' ,this.$el,this.$data)
+                    },methods:{
+                        add(){
+                            this.count++;
+                        },
+                        del(){
+                            this.$destroy(); //销毁组件的专用方法
+                        }
+                    }
+                })
+            </script>
+    </body>
+</html>
