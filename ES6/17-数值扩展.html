@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 数值的扩展
+        1.Number.isNaN():判断是否是非数字  true--不是数字；false:是数字
+        2.Number.isInteger():判断是否为整数
+        3.Number.parseInt();//将字符串转为数值
+            12.36----12。
+            12abc---12
+            c12ds--NAN
+        4.Number.parseFloat();//浮点数 将字符串转为数值
+       注： 一些方法是原来都有的，移植到Number的对象上面，目的是，逐步减少全局性的方法，使得语言逐渐模块化。
+       5.Math.trunc():去掉一个数的小数部分
+       6.Math.sign():判断一个数是正数(1)，负数(-1)，0(0)
+    -->
+    <script>
+        /*
+            问题：isNaN为啥都返回false?
+             isNaN()的参数如果不是数值型的会先自动转换成数值型，再来判断这个数值是不是NaN。
+             isNaN("saff")-----true 
+             Number.isNaN("aafafaf")----false
+             Number.isNaN("aafafaf"-1)----true
+             
+
+        */
+        console.log(Number.isNaN(12));
+        console.log(Number.isNaN('x'));
+        console.log(Number.isInteger(12));
+        console.log(Number.parseFloat('12.34'));
+        console.log(Number.parseInt('12'));
+        console.log(Number.parseInt('12cb'));
+        console.log(Number.parseInt('da12'));
+
+
+        console.log(Math.trunc(12.31));
+        console.log(Math.sign(21));
+        console.log(Math.sign(-1));
+        console.log(Math.sign(0));
+    </script>
+</body>
+</html>

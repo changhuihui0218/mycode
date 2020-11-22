@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 对象的扩展
+        1.对象的简写方法：
+            属性：若属性名==属性值，则可以直接写属性值就行；
+            方法：
+                es5:方法名：function(){xxx}
+                es6:方法名(){xxxxxxxx}\
+        2.当属性是动态的时候，用obj[属性名]来获取该属性值   动态的意思是将属性写成变量的意思
+        3.Object.is(1,2):判断1，2 两个对象是否相等、
+            +0===-0  true
+            NaN===NaN  false
+        4.assign(1,2)用来合并对象，重复的属性，后者会覆盖前者的属性
+        5.循环：obj in 对象
+    -->
+    <script>
+        /*
+            不应该  obj2.name输出name  解决了没有定义name变量
+        */ 
+        let name="lisi"
+        obj1 = {
+            name:'zs',
+            age:18,
+            say:function(){
+                console.log("hahha")
+            }
+        }
+        obj2 = {
+            name,
+            age:20,
+            says(){
+                console.log("hehehe");
+            }
+        }
+        console.log(obj1,obj2.name);
+        obj1.say();
+        obj2.says();
+
+        console.log(Object.is(obj1,obj2));
+        console.log(Object.assign(obj1,obj2));
+
+        for(index in obj1){
+            console.log(obj1[index])
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 字符串的扩展
+        es5:
+            数组的 splice(参数1，参数2 ,参数3):
+                        可以添加，也可以删除，可以替换
+                        参数1 ：从哪里开始
+                        参数2 ：删除字符的长度
+                        参数3 ：替换的字符
+                    返回值为 删除元素组成的数组
+        es6:
+         1.模板字符串 ${xxx}
+            做拼接使用
+            es5:("xxxx"+str+"xxxx")
+            es6:(`xxxxxxx${str}xxxxxxxx`)
+                用··反引号将字符串括起来。
+                中间拼接的字符用${xxx}
+         2.includes('x'):判断字符串中是否包含该字符
+         3.indexOf('x');返回某个字符在字符串中的位置
+         4.startsWith()/endsWith();判断以。。。。开始/结束
+         5.padStart(参数1，参数2) 
+                从前往后填充字符串
+                参数1：填充后总字符串的个数
+                参数2：填充的内容。若内容小于个数则重复填充。
+           padEnd(1,2) 从后往前
+         6.repeat();重复字符串的次数
+     -->
+     <script>
+         var arr1=[1,2,3]
+         //删除
+         arr1.splice(1,1)
+         console.log(arr1)
+         //添加
+         arr1.splice(1,0,'a','b')
+         console.log(arr1)
+
+         str=121
+         console.log("我i是部分班"+str+"级服务部分");
+         console.log(`我i是部分班${str}级服务部分`);
+
+         str1="abc"
+         console.log(str1.includes('a'));
+         console.log(str1.indexOf('a'));
+         console.log(str1.startsWith('ab'));
+         console.log(str1.padStart(10,'ab'));
+         console.log(str1.padEnd(10,'ab'))
+         console.log(str1.repeat(2));
+     </script>
+</body>
+</html>

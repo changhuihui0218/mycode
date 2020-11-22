@@ -7,6 +7,83 @@
     </head>
     <body>
         <!-- Ajax
+           1.什么是Ajax?
+                AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。
+                异步进行交互的  和服务器交互（从数据库中获取数据）
+                异步请求，不重新加载页面，直接请求后台的数据(node,js pap)
+
+                AJAX 是一种用于创建快速动态网页的技术。
+                通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。
+                传统的网页（不使用 AJAX）如果需要更新内容，必需重载整个网页面。
+                有很多使用 AJAX 的应用程序案例：新浪微博、Google 地图、开心网等等。
+                总的来说：Ajax是一种和后台交互的方式，不需要加载整个网页的情况下能够更新我们的部分页面
+
+            2.原生js下创建的ajax的流程（面试的题目 Ajax的原理）
+                1.创建XMLHttpRequest对象
+                    var xmlHttp;
+                    if(window.XMLHttpRequest){
+                        xmlHttp = new XMLHttpRequest();
+                    }else{
+                        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+
+                2.向服务器发请求
+                常见的两种请求方式：1.GET:获取数据，量少，将请求的数据放到地址栏
+                                2.POST:表单元素提交，数据量大，安全       例如：学号，姓名提交
+                xmlHttp.open(参数1,参数2 ,参数3)
+                    参数1：请求方式
+                    参数2：请求的地址
+                    参数3：True/False是否异步(异步：你去请求你的，下面的代码自己操作自己的 不阻塞下面代码的执行
+                                            同步：下面的代码要等到数据请求回来才可以操作)
+                xmlHttp.send（）//发送请求
+
+                3.服务器响应
+                xmlHttp.onreadystatechange=function(){
+                    if(xmlHttp.readyState==4 && xmlHttp.status==200){
+                        console.log(xmlHttp.responseText);
+                    }
+                }
+
+                onreadystatechange();，每当 readyState 属性改变时，就会调用该函数。
+                readyState: XMLHttpRequest 的状态。从 0 到 4 发生变化。
+                    0: 请求未初始化
+                    1: 服务器连接已建立
+                    2: 请求已接收
+                    3: 请求处理中
+                    4: 请求已完成，且响应已就绪
+                state:状态码
+                    200：成功
+                    404：服务器错误，找不到页面，一般是地址写错或者是后台写错了
+                    304：缓存
+                    403：禁止访问
+
+        注意：运行的时候一般不能用正常的open Default Browser打开浏览器；要用插件open with live server打开
+              否则打开的是file//D:协议，不安全
+        
+        3.数据请求成功后怎么查看？
+             点击后台-----NetWork------XHR(用来监测请求)
+             Response/Preview:---值都一样，格式不同
+             请求回来的数据都是JSON格式，不是真正的对象的格式。{“xxx”: "xxx"}   一般对象时{xxxx:"xxxx"}
+             JSON.parse();进行转换一下，就变成了正常的对象
          -->
+         <script>
+             //1.创建XMLHttpRequest对象
+             var xmlHttp;
+            if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlHttp=new XMLHttpRequest();
+            }else{   // code for IE6, IE5
+                xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            //2.Ajax向服务器发请求
+            xmlHttp.open("GET","http://admin.gxxmglzx.com/tender/test/get_type")
+            xmlHttp.send();
+            //3 服务器响应
+            xmlHttp.onreadystatechange=function(){
+                if(xmlHttp.readyState==4 && xmlHttp.status==200){
+                    console.log(JSON.parse(xmlHttp.responseText));
+                }
+            }
+         </script>
     </body>
 </html>

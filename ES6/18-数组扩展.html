@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 数组的扩展
+        1.Array.from():将类数组转为数组  类数组：set\document获取的数据
+        2.includes():判断数组中是否包含
+        3.循环：
+            1.for of  for(value of array){xxxxxxxxxxx} 
+                array.keys()----索引
+                array.values()----元素值
+                array.entries()----[索引，元素值]
+            2.forEach(function(value,key){xxxxxxxxxxx})
+        4.map 映射，根据函数中的方法进行操作后返回一个新数组
+            array.map(function(值，索引){return{xxxxxxxxxxx}})
+        5.filter 过滤符合function条件的值
+            array.filter(function(值，索引){return{条件}})
+        6.find  用于找出第一个符合条件的的数组成员
+            array.find(function(值，索引){return{条件}})
+    -->
+    <script>
+        var array1=[1,2,3,4]
+        var arr= new Set(array1)
+
+        console.log(arr)
+        let arr2 =Array.from(arr)
+        console.log(arr2);
+
+        console.log(arr2.includes(1));
+        //for of
+        for(let value of arr2.keys()){
+            console.log(value);
+        }
+        for(let value of arr2.values()){
+            console.log(value);
+        }
+        for(let [value,index] of arr2.entries()){
+            console.log(value,index);
+        }
+        //foEach
+        arr2.forEach(function(value,index){
+            console.log(value,index)
+        })
+
+
+
+        let arr3 = [{
+            name: 'zs',
+            age: 18
+        }, {
+            name: 'lisi',
+            age: 20
+        }, {
+            name: 'wangwu',
+            age: 39
+        },
+        {
+            name: 'zhaoliu',
+            age: 80
+        }];
+        //map
+        let arr4=arr3.map(function(obj,index){
+            return {name:obj.name,age:obj.age*2}
+        })
+        console.log(arr4)
+
+        //filter
+        let arr5=arr3.filter(function(obj,index){
+            return obj.age>20
+        })
+        console.log(arr5)
+
+        //find
+        let arr6=arr3.find(function(obj,index){
+            return obj.age>20
+        })
+        console.log(arr6)
+    </script>
+</body>
+</html>

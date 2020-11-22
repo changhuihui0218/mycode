@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+    </ul>
+    <button id="btn">sousuo</button>
+    <script>
+        //
+        // var aList =document.getElementsByTagName("li");
+        // for(let i=0;i<aList.length;i++){
+        //     aList[i].onclick=function(){
+        //         console.log(i);
+        //     }
+        // }
+
+        //闭包实现2
+        // var aList =document.getElementsByTagName("li");
+        // for(var i=0;i<aList.length;i++){
+        //     (function(i){
+        //         aList[i].onclick=function(){
+        //             console.log(i);
+        //         }
+        //     })(i)
+        // }
+
+        /*
+            为啥 不用加了
+        */
+        //函数防抖
+        var oBtn = document.getElementById("btn");
+
+        
+        oBtn.onclick=function(){
+            console.log(1);
+        }
+    </script>
+</body>
+</html>
