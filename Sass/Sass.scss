@@ -1,85 +1,21 @@
-/*
-   Sass 
-        是css的预处理。
-        什么是预处理？
-            css预处理器定义了一种新的语言，其基本思想是，用一种专门的编程语言，为css增加了一些编程特性，
-            将css作为目标生成文件，然后开发者就只要使这种语言进行编码工作。
-        其他css的预处理：scss/less
-                        sass和scss其实是一种东西 只是.sass/.scss结尾
-                        sass:严格缩进，无{} ();
-                        scss:有{}
-        
-        css:都是key:value里面的值都是写死的
-            不能定义变量、if-else\for循环
-        Sass：有着比css更强大的功能：比如可以定义变量、循环，定义函数、封装一些方法（有点像js的功能一样）
-              写代码更加简洁，但最后会生成css
-        Sass是什么？
-            采用的Ruby语言编写的一款Css预处理语言。
-            以前使用sass,必须先安装Ruby,再安装Sass。
-            现在只需要安装一个插件Easy sass   然后一按保存之后会自动生成两个.css文件，一个是正常的文件，一个是压缩的文件
-
-        css的输出格式：
-            可以通过配置文件中修改配置
-            嵌套输出：nested
-                ul{
-                    line-height:30px;}
-            展开输出方式：expanded---------css常用的
-                ul{
-                    line-height:30px;
-                }
-            紧凑输出方式：compact-----一行一行的
-                ul{line-height:30px;}
-                ul{line-height:30px;}
-            压缩输出方式：compressed
-                所有的都在一行 
-                ul{line-height:30px;} ul{line-height:30px;}
-        css的注释：
-            多行注释 /x x/在css中会保留
-            单行注释//(js中的)：css中不会保留
-            压缩模式中会去掉注释
-            强制注释/x! x/  (*用x代替)
-    sass的一些语法：
-        定义一些变量、使用一些嵌套，定义一些混合宏
-        1.变量：
-            定义变量：$变量名:变量值;
-            使用变量: $变量
-        2.嵌套:根据html中的结构一层一层嵌套
-            在html中引入sass(必须引入css文件) <link rel="stylesheet" href="Sass.css">
-        3.&引入父选择器(&:hover )
-        4.属性嵌套：
-            比如padding-top====
-                padding:{
-                    top:0,
-                    left:0
-                }
-        5.#{$变量名}
-            当变量名用作属性名时用这个而不能直接用$变量名
-            当变量用作选择器
-            当变量用作注释中
-        6.mixin混合 
-                
-
-            
-    
-    
-   
-*/
 // $color:red;
 // body{
 //     background: $color;
 // }
+@import 'common.scss';
 $h2:"height";
-
 #container{
     h2{
         color: green;
         #{$h2}:100px;
     }
     p{
-        color: blue;
+        color: red;
+        // padding-top: 30px;
+        // padding-bottom: 30px;
         padding:{
-            top:100px;
-            left:100px;
+            top:20px;
+            bottom:20px;
         };
     }
     a{
@@ -88,5 +24,42 @@ $h2:"height";
             color: burlywood;
         }
     }
+    #div1{
+        @include arrow(30px,pink,'left');
+    }
     
 }
+/*
+    为什么在继承的后面加代码,css好使，但是页面就不好
+    为什么common是null？
+*/
+.div1{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+.div2{
+    @extend .div1;
+    // background-color: gray;
+    color: #fff;
+}
+
+@for $i from 1 through 5{
+    .icon#{$i}{
+        width: 20*$i;
+    }
+}
+
+@for $i from 1 to 5{
+    .btn#{$i}{
+        width: 20*$i;
+    }
+}
+
+$list:sad dad dad;
+@each $var in $list {
+    .#{$var}{
+        height: 100px;
+    }
+}
+
