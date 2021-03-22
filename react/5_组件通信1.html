@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 事件 -->
+    <div id="root"></div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        // 父组件 
+        class Main extends React.Component {
+           constructor() {
+               super()
+               this.state = {
+                   score: 80
+               }
+           }
+           change(){
+               console.log(123);
+           }
+           render() {
+               return (
+                <div>
+                   <h1>父组件</h1>
+                   <Sub title='张三' score={this.state.score} change={this.change}></Sub>
+                   {
+                    //   <Sub title='李四'></Sub>
+                   }
+               </div>
+               )
+           }
+        } 
+        // 子组件
+        /* 
+            父到子传值
+                父组件中调用子组件的时候(名字='xxxx')  
+                子组件中this.props.传入的名字
+        */
+        class Sub extends React.Component {
+           render() {
+               return (
+                <div>
+                   <p>
+                    {this.props.title} 成绩 {this.props.score}
+                    <button onClick={this.change}>+</button>
+                    <button onClick={this.change}>-</button>
+                    </p>
+               </div>
+               )
+           }
+        } 
+
+        ReactDOM.render(
+            <Main></Main>,
+            document.getElementById('root')
+        )
+    </script>
+</body>
+</html>

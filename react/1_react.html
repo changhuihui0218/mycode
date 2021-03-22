@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+
+    </div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+    // 1.简单使用 
+        // ReactDOM.render(
+        //     <div>
+        //         <h1>哈哈哈哈哈</h1>    
+        //     </div>,
+        //     document.getElementById('root')
+        // )
+    
+    /*
+        2.组件
+            函数组件
+            class的方式定义组件
+    */
+   //  函数组件---无状态
+        //    const Hello = (params) => {
+        //         return (
+        //             <div>
+        //                 <h1>{params.title}</h1>
+        //                 <p>{params.content}</p>    
+        //             </div>
+        //         )
+        //    }
+        //    ReactDOM.render(
+        //        <Hello title='标题' content='内容哈哈哈哈哈哈'></Hello>,
+        //        document.getElementById('root')
+        //    )
+    
+    // class 方式--有状态
+    class Hello extends React.Component {
+        constructor(){
+            super();
+        }
+        render(){
+            return (
+                <div>
+                    <h1>{this.props.title}</h1>
+                    <p>{this.props.content}</p>
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(
+        <Hello title="标题哈哈哈哈" content='内容呵呵呵呵呵'></Hello>,
+        document.getElementById('root')
+    )
+   
+    </script>
+</body>
+</html>

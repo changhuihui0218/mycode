@@ -6,3 +6,10 @@ react.dom
 babel----es6转化 jsx也要通过这个转化
 
 没有指令，通过组件划分页面
+组件
+函数组件
+const 函数名 = () =>{
+    return (
+        <div></div>
+    )
+}

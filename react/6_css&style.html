@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #aaa {
+            background-color: red;
+        }
+        .bbb {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+    // class修改成className
+       class Main extends React.Component{
+           render() {
+               return (
+                   <div>
+                       <p id='aaa'>哈哈哈哈哈哈</p>
+                       <p className='bbb'>呵呵呵呵呵</p>
+                       <p style={{background: 'pink'}}>呃呃呃呃呃呃</p>
+                   </div>
+               )
+           }
+       }
+       ReactDOM.render(
+           <Main></Main>,
+           document.getElementById('root')
+       )
+    </script>
+</body>
+</html>

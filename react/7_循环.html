@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        // 利用map进行循环操作;
+        class Main extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    list: [1,2,3],
+                }
+            }
+            render() {
+                return (
+                    <ul>
+                    {
+                        this.state.list.map( (val,index) =>{
+                            return <li key={index}>{val}</li>
+                        })
+                    }
+                </ul>
+                )
+            }
+        }
+        ReactDOM.render(
+            <Main></Main>,
+            document.getElementById('root')
+        )
+
+    </script>
+</body>
+</html>

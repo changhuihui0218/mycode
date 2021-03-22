@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 事件 -->
+    <div id="root"></div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        class Main extends React.Component {
+            constructor() {
+                super()
+                this.state = {
+                    num:0
+                }
+                // this.change = this.change.bind(this);
+            }
+            // 1.正常的事件---直接驼峰式命名
+            // render() {
+            //     return (
+            //         <div>
+            //             <h1>1</h1>
+            //             <button onClick={()=>{
+            //                 console.log(111);
+            //             }}>click</button>
+            //         </div>
+            //     )
+            // }
+
+            // 2.复杂的函数
+            // 自定义的方法没有this,自带的方法有this，
+            //方法1:用this指向修改的方法 apply、call、bind（因为一上来不调用，后来点击才会调用）
+            // change(){
+            //     console.log(this);
+            //     this.setState({
+            //         num: 100
+            //     })
+            // }
+            // render() {
+            //     let {num} =this.state; 
+            //     return (
+            //         <div>
+            //             <h1>{num}</h1>
+            //             <button onClick={this.change.bind(this)}>click</button>
+            //         </div>
+            //     )
+            // }
+            
+            //方法2: 在构造函数中 this.change=this.change.bind(this);返回修改后的方法
+            // change(){
+            //     console.log(this);
+            //     this.setState({
+            //         num: 100
+            //     })
+            // }
+            // render() {
+            //     let {num} =this.state; 
+            //     return (
+            //         <div>
+            //             <h1>{num}</h1>
+            //             <button onClick={this.change}>click</button>
+            //         </div>
+            //     )
+            // }
+
+            //3.获取事件源，event
+            fn(e){
+                console.log(e.target);
+            }
+            render() {
+                return (
+                    <div>
+                        <input type="text" onChange={this.fn}/>
+                    </div>
+                )
+            }
+         } 
+
+        ReactDOM.render(
+            <Main></Main>,
+            document.getElementById('root')
+        )
+    </script>
+</body>
+</html>

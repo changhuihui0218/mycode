@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        // 通过三目运算符进行判断
+        // 用if-else 然后用一个变量接受值
+        class Main extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    isLogin: 0// 1表示已登陆 0表示未登陆
+                }
+            }
+            render() {
+                let {isLogin} =this.state;
+                //方式1:使用if-else进行判断,然后用一个变量保存最后的值
+                let tmp;
+                if(isLogin) {
+                    tmp = <p>哈喽,哈哈哈哈</p>;
+                }else {
+                    tmp = <p>请登录</p>;
+                }
+                return tmp;
+
+                //方式2 用一个三目运算进行判断
+                // return (
+                //     <div>
+                //     {
+                //         isLogin? <p>请登录</p> : <p>你好,哈哈哈哈</p>
+                //     }
+                // </div>
+                // )
+            }
+        }
+        ReactDOM.render(
+            <Main></Main>,
+            document.getElementById('root')
+        )
+
+    </script>
+</body>
+</html>
