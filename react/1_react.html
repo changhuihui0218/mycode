@@ -50,12 +50,16 @@
                 <div>
                     <h1>{this.props.title}</h1>
                     <p>{this.props.content}</p>
+                    {this.props.children}
                 </div>
+                // 取开始和闭合之间的内容标签 {this.props.children}
             )
         }
     }
     ReactDOM.render(
-        <Hello title="标题哈哈哈哈" content='内容呵呵呵呵呵'></Hello>,
+        <Hello title="标题哈哈哈哈" content='内容呵呵呵呵呵'>
+            <h3>哈哈哈哈</h3>
+        </Hello>,
         document.getElementById('root')
     )
    

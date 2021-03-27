@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            list-style: none;
+        }
+        .red {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        class Main extends React.Component {
+            constructor() {
+                super();
+                // 数据添加到公共的父组件中，列表中也要使用，删除选中也都要使用
+                this.state = {
+                    list : [
+                        {
+                            name: '苹果',
+                            price: 12,
+                            id: 1,
+                            isCheck: false,
+                            show: true,
+                        },
+                        {
+                            name: '香蕉',
+                            price: 15,
+                            id:2,
+                            isCheck: false,
+                            show: true,
+                        }
+                    ],
+                    total: 0,
+                }
+                this.add = this.add.bind(this);
+                this.totalSum = this.totalSum.bind(this);
+                this.change = this.change.bind(this);
+                this.del = this.del.bind(this);
+                this.delAll = this.delAll.bind(this);
+                this.search = this.search.bind(this);
+            }
+            add(name,price) {
+                // 不能直接往数组中push，因为只能通过setState修改
+                // this.state.list.push({name:name,price:price});
+
+                // 方法：可以先新建一个数组，然后操作完，通过setState来修改state的值
+                let {list} = this.state;
+                list.push({name:name,price:price,id:new Date().getTime(),isCheck:false,show:true});
+                this.setState({
+                    list:list,
+                })
+            }
+            change(index) {
+                let {list} = this.state;
+                list[index].isCheck = !list[index].isCheck;
+                this.setState({
+                    list:list,
+                })
+            }
+            del(e,index) {
+                let {list} = this.state;
+                //怎么删除元素--根据索引找到选中的元素splice删掉一个
+                list.splice(index,1);
+                this.setState({
+                     list:list,
+                })
+                // 阻止事件冒泡 ，无参数的时候直接在形参中传递 ，有参数的时候 在调用的时候传e，形参中接受它
+                e.stopPropagation();
+
+            }
+            //删除选中---直接过滤掉选中的，剩下的都是没有选中的
+            delAll() {
+                let {list} = this.state;
+                let list1 = list.filter((value)=>{
+                    return !value.isCheck;
+                })
+                this.setState({
+                    list:list1,
+                })
+            }
+            //怎么写一个随时动态变化的函数---直接{}中直接调用
+            totalSum() {
+                let {list} = this.state;
+                let sum=0;
+                list.forEach((value)=>{
+                    if(value.isCheck) {
+                        sum+=value.price;
+                    }  
+                })
+                return sum;
+            }
+            search(val) {
+                let {list} = this.state;
+                list.forEach((value)=>{
+                    if(value.name.includes(val)){
+                        value.show = true;
+                    }else {
+                        value.show = false;
+                    }
+                })
+                this.setState({
+                    list
+                })
+            }
+            render() {
+                let {list,total} = this.state;
+                return (
+                    <div>
+                        <h2>todoList</h2>
+                        <hr/>
+                        <Add add={this.add}></Add>
+                        <Search search={this.search}></Search>
+                        <List list={list} del={this.del} change={this.change}></List>
+                        <button onClick={()=>{
+                            this.delAll();
+                        }}>删除选中</button>
+                        <span>总价{this.totalSum()}</span>
+                    </div>
+                )
+
+            }
+        }
+        class Add extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <span>名称：</span>
+                        <input type="text" ref={(input)=>{
+                            this.name =input;
+                        }} />
+                        <span>价格：</span>
+                        <input type="text" ref={(input)=>{
+                            this.price =input;
+                        }} />
+                        {
+                            //不能用这种方法
+                            // <button onClick={this.add(this.name,this.price)}>添加</button>
+                        }
+                        <button onClick={()=> {
+                            this.props.add(this.name.value,this.price.value);
+                            this.name.value='';
+                            this.price.value='';
+                        }}>添加</button>
+                    </div>
+                )
+            }
+        }
+        class Search extends React.Component {
+            render() {
+               return (
+                <div>
+                    <input type="text" ref={(input)=>{
+                        this.val = input;
+                    }}/>
+                    <button onClick={()=>{
+                        this.props.search(this.val.value);
+                    }}>搜索</button>
+                </div>
+               )
+            }
+        }
+        class List extends React.Component {
+            render() {
+               return (
+                <div>
+                    <ul>
+                       {
+                           this.props.list.map((value,index)=>{
+                               return (
+                                <li key={value.id} onClick={()=>{
+                                    this.props.change(index);
+                                }} className = {value.isCheck? 'red':''} style={{ display:value.show? 'block':'none'}}>
+                                    <input type="checkbox" checked={value.isCheck} />
+                                    <span>{value.name}</span>
+                                    <span>{value.price}</span>
+                                    <button onClick={(e)=>{
+                                        this.props.del(e,index);
+                                    }}>X</button>
+                                </li>
+                               )
+                           })
+                       }
+                    </ul>
+                </div>
+               )
+            }
+        }
+        ReactDOM.render(
+            <Main></Main>,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+</html>
