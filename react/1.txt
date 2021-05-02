@@ -1,15 +1,13 @@
-更加注重于市图 v,相对于视图。（17版本）
-使用
-引入好多个文件
-react.
-react.dom
-babel----es6转化 jsx也要通过这个转化
 
-没有指令，通过组件划分页面
-组件
-函数组件
 const 函数名 = () =>{
     return (
         <div></div>
     )
 }
+
+搭建脚手架
+第一种：删掉package.lock.json
+第二种：清除cache
+npm cache clean --force
+第三种：进入下面这个文件夹，把文件夹npm-cache下的内容删除掉（清除cache）
+路径：C:/Users/PC/AppData/Roaming/npm-cache

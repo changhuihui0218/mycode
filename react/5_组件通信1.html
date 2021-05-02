@@ -19,9 +19,19 @@
                this.state = {
                    score: 80
                }
+               this.change = this.change.bind(this)
            }
-           change(){
-               console.log(123);
+           change(num,type){
+                let {score} = this.state;
+                if(type=='+') {
+                    this.setState({
+                        score : score+num
+                    })
+                }else {
+                    this.setState({
+                        score : score-num
+                    })
+                }
            }
            render() {
                return (
@@ -49,9 +59,12 @@
                return (
                 <div>
                    <p>
-                    {this.props.title} 成绩 {this.props.score}
-                    <button onClick={this.change}>+</button>
-                    <button onClick={this.change}>-</button>
+                    {this.props.title} 成绩 :{this.props.score}
+                    <button onClick={this.props.change}>+</button>
+                    <button onClick={()=>{
+                        this.props.change(3,'-') 
+                    // 如果要写参数的话，必须这样写不能方法名，直接调用了，在点击时调用
+                    }}>-</button>
                     </p>
                </div>
                )

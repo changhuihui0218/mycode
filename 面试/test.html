@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            实现一个深拷贝
+                思路：1、首先判断传入的值是否只是一个简单数据类型像字符串、数字等
+                      2、将引用数据类型 判断是数组还是对象，用一个变量保存起来
+                      3、遍历这个对象
+        */ 
+        
+        // function deepClone(obj){
+        //     if(obj && typeof(obj)==='object'){
+        //         var cloneObj = Array.isArray(obj) ? [] : {};
+        //         for(var key in obj) {
+        //             if(obj[key] && typeof(obj[key])==='object') {
+        //                 cloneObj[key] = deepClone(obj[key]);
+        //             }else {
+        //                 cloneObj[key] = obj[key];
+        //             }
+        //         }
+        //         return cloneObj;
+
+        //     }else {
+        //         return obj;
+        //     }
+        // }
+
+
+
+        // var obj=[1,2,3,4,[2,4,6]];
+        // let obj1 = {
+        //     a: 1,
+        //     b: 2,
+        //     c: [1, 2, 3],
+        //     d: undefined,
+        // }
+        // console.log(JSON.parse(JSON.stringify(obj1)))
+        // console.log(deepClone(obj1))
+
+        /*
+            浅拷贝
+        */ 
+        // 方式一：Object.assign()
+        // let a ={ age:1, } 
+        // let b=Object.assign({},a); 
+        // b.age=2; 
+        // console.log(a.age); 
+        // // 方法二：...
+        // let a={ age:1,}
+        // let b={...a}; //两个地址
+        // b.age=2;
+        // console.log(a.age);
+
+        // let a = { age: 1, } 
+        // let b = a 
+        // a.age = 2 
+        // console.log(b.age);
+
+
+        
+        // import _ from 'lodash' 
+        // var obj = {id:1,name:{a:'xx'},fn:function(){}}; 
+        // var obj2 = _.cloneDeep(obj); 
+        // obj2.name.a = 'obj2';
+        // console.log(obj,obj2) 
+
+        //统计一个字符串中字母出现的次数
+        // var str = 'helloworld';
+
+
+        // function count1(str) {
+        //     var arr = str.split('');
+        //     for(let i=0;i<arr.length;i++){
+        //         for(var j=1,count=1;j<arr.length;j++){
+        //             if(arr[j] == arr[i]) {
+        //                 arr.splice(i,1);
+        //                 count++;
+        //             }
+        //         }
+        //         console.log(count);
+        //     }
+            
+        //  } 
+
+        //  function count2(str) {
+        //     var arr = str.split('');
+        //     var obj = {};
+        //     arr.forEach((val,index) => {
+        //         if(obj[val]) {
+        //             obj[val]++;
+        //         }else {
+        //             obj[val]=1;
+        //         }
+        //     });
+        //     return obj;
+        //  } 
+        // console.log(count2(str));
+        // obj1=Object.keys(obj).sort(function(a,b){
+        //     return obj[a]-obj[b];
+        // })
+        // var objNew={};
+        // for(let i=0;i<obj1.length;i++) {
+        //     console.log('key:'+obj1[i]+' value:'+obj[obj1[i]]);
+        // }
+
+
+        // 统计链表是否有环
+        // function hasCycle(head){
+        //     if(head==null || head.next==null) {
+        //         return false
+        //     }
+        //     let fast = head.next.next;
+        //     let slow=head;
+        //     while(fast != slow) {
+        //         if(fast==null ||fast.next==null) {
+        //             return false;
+        //         }
+        //         fast=fast.next.next;
+        //         slow=slow.next;
+        //     }
+        //     return true;
+        // }
+
+        // var strCookie = document.cookie;
+        // var arrCookie = strCookie.split("; "); 
+        // for(var i = 0; i < arrCookie.length; i++){
+        //     var arr = arrCookie[i].split("=");
+        //     console.log(arr[0],'-',arr[1]);
+        // }
+
+        // function getCookie(name) {
+        //     var arr,reg = new RegExp("(^| )"+name+"([^;]*)(;|$)");
+        //     if(arr=document.cookie.match(reg)){
+        //         return unescape(arr[2]);
+        //     }else {
+        //         return null;
+        //     }
+
+        // }
+
+        // function flatten(arr) {
+        //     arr.re
+        // }
+
+function findGreatestSun(arr){
+	var curSum, greatestSum;
+	curSum = greatestSum = 0;
+	var start, end;
+	start = end = 0;
+	//数组中正负数都有
+	for(var i = 0;i<arr.length;i++){
+		curSum+= arr[i];
+		if(curSum < 0){
+			curSum = 0;
+			start++;
+		}
+		if(curSum > greatestSum){
+			greatestSum = curSum;
+			end = i;
+		}
+		
+	}
+	//若数组中只有非正数，则找到最大的值即为最大和
+	if(greatestSum == 0){
+		start = end = 0;
+		for(var i = 1;i<arr.length;i++){
+			greatestSum = arr[0];
+			if(greatestSum < arr[i]){
+				greatestSum = arr[i];
+				start = end = i;
+			}
+		}
+	}
+	alert("sum:"+greatestSum +"--start:"+start+"--end:"+end);
+}
+ 
+var arr_a = [-2, -4, -7, -3, -5];
+
+findGreatestSun(arr_a);
+    </script>
+</body>
+</html>

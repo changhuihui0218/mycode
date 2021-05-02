@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        // 函数组件没有生命周期
+        // react也有一个完整的生命周期 开始创建---初始化数据----编译模板---挂载DOM----渲染，更新---渲染----卸载等操作
+        /*
+            对于一个正常的组件
+                constructor->将要挂载willMount->渲染render->挂载完成DidMount
+            想要修改一个组件的值或者状态：
+                shouldComponentUpdate---->componentWillUpdate---->render----->componentDidUpdate
+               要是不想要渲染值 false 则只有 shouldComponentUpdate，没有后面的
+            对于父子组件结合:
+            constructor--->componentWillMount----->render----->
+                                child constructor---> child componentWillMount-->child render--->child componentDidMount
+            -------->componentDidMount
+            父子组合修改值的时候：
+                shouldComponentUpdate---->componentWillUpdate--->render--->child componentWillReceiveProps
+                ------>child shouldComponentUpdate---->child componentWillUpdate---->child render---->child componentDidUpdate
+                ---->componentDidUpdate
+        */ 
+        class Main extends React.Component {
+            constructor() {
+                console.log('constructor');
+                super();
+                this.state = {
+                    count:0,
+                }
+                this.add = this.add.bind(this);
+            }
+            // 组件将要挂载
+            componentWillMount() {
+                console.log('componentWillMount');
+            }
+            //组件挂载完成----发送请求
+            componentDidMount() {
+                console.log('componentDidMount');
+            }
+
+            // 组件将要更新
+            componentWillUpdate() {
+                console.log('componentWillUpdate');
+            }
+            // 组件更新完成
+            componentDidUpdate() {
+                console.log('componentDidUpdate');
+            }
+            // 子组件的生命周期 子组件接受父组件的属性
+            componentWillReceiveProps() {
+                console.log('componentWillReceiveProps');
+            }
+            // 当组件的 子组件  should 组件要更新嘛 控制组件是否重新渲染
+            shouldComponentUpdate(nProps,nState) {
+                console.log('shouldComponentUpdate');
+                return true;
+                //做性能优化  false---返回一样 性能优化的生命周期
+            }
+            add() {
+                let {count}=this.state;
+                this.setState({
+                    count: ++count,
+                })
+            }
+            render() {
+                console.log('render');
+                let {count} = this.state;
+                return(
+                    <div>
+                        <h2>{count}</h2>
+                        <button onClick={()=>{
+                            this.setState({
+                                count: ++count,
+                            })
+                        }}>click</button>
+                        <Sub count={count} add={this.add}></Sub>
+                    </div>
+                )
+            }
+        }
+        class Sub extends React.Component {
+            constructor() {
+                console.log('child constructor');
+                super();
+            }
+            componentWillMount() {
+                console.log(' child componentWillMount');
+            }
+            //组件挂载完成----发送请求
+            componentDidMount() {
+                console.log('child componentDidMount');
+            }
+
+            // 组件将要更新
+            componentWillUpdate() {
+                console.log('child componentWillUpdate');
+            }
+            // 组件更新完成
+            componentDidUpdate() {
+                console.log('child componentDidUpdate');
+            }
+            // 子组件的生命周期 子组件接受父组件的属性
+            componentWillReceiveProps() {
+                console.log('child componentWillReceiveProps');
+            }
+            // 当组件的 子组件  should 组件要更新嘛 控制组件是否重新渲染
+            shouldComponentUpdate(nProps,nState) {
+                console.log('child shouldComponentUpdate');
+                return false;
+                //做性能优化  false---返回一样 性能优化的生命周期
+            }
+            render() {
+                console.log('child render');
+                return(
+                    <div>
+                        <h2>{this.props.count}</h2>
+                        <button onClick={()=>{
+                            this.props.add();
+                        }}>click</button>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(
+            <Main></Main>,
+            document.getElementById('root')
+        )
+    </script>
+</body>
+</html>

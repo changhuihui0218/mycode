@@ -18,56 +18,59 @@
                 this.state = {
                     num:0
                 }
-                // this.change = this.change.bind(this);
+                this.change = this.change.bind(this);
+            }
+            change() {
+                console.log(111);
             }
             // 1.正常的事件---直接驼峰式命名
-            // render() {
-            //     return (
-            //         <div>
-            //             <h1>1</h1>
-            //             <button onClick={()=>{
-            //                 console.log(111);
-            //             }}>click</button>
-            //             <button onClick={this.change}>click</button> //不能加（），不是自己调用，是通过点击才可以调用
-            //         </div>
-            //     )
-            // }
+            render() {
+                return (
+                    <div>
+                        <h1>1</h1>
+                        <button onClick={()=>{
+                            console.log(111);
+                        }}>click</button>
+                        <button onClick={this.change}>click</button> //不能加（），不是自己调用，是通过点击才可以调用
+                    </div>
+                )
+            }
 
             // 2.复杂的函数
             // 自定义的方法没有this,自带的方法有this，
             //方法1:用this指向修改的方法 apply、call、bind（因为一上来不调用，后来点击才会调用）
-            // change(){
-            //     console.log(this);
-            //     this.setState({
-            //         num: 100
-            //     })
-            // }
-            // render() {
-            //     let {num} =this.state; 
-            //     return (
-            //         <div>
-            //             <h1>{num}</h1>
-            //             <button onClick={this.change.bind(this)}>click</button>
-            //         </div>
-            //     )
-            // }
+            change(){
+                console.log(this);
+                this.setState({
+                    num: 100
+                })
+            }
+            render() {
+                let {num} =this.state; 
+                return (
+                    <div>
+                        <h1>{num}</h1>
+                        <button onClick={this.change.bind(this)}>click</button>
+                    </div>
+                )
+            }
             
             //方法2: 在构造函数中 this.change=this.change.bind(this);返回修改后的方法
-            // change(){
-            //     console.log(this);
-            //     this.setState({
-            //         num: 100
-            //     })
-            // }
-            // render() {
-            //     let {num} =this.state; 
-            //     return (
-            //         <div>
-            //             <h1>{num}</h1>
-            //             <button onClick={this.change}>click</button>
-            //         </div>
-            //     )
-            // }
+            change(){
+                console.log(this);
+                this.setState({
+                    num: 100
+                })
+            }
+            render() {
+                let {num} =this.state; 
+                return (
+                    <div>
+                        <h1>{num}</h1>
+                        <button onClick={this.change}>click</button>
+                    </div>
+                )
+            }
 
             //3.获取事件源，event
             fn(e){

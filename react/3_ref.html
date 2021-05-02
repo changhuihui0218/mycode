@@ -14,24 +14,25 @@
     <!--获取dom元素 函数组件没有，只有class有 -->
     <script type="text/babel">
         //  1.直接给ref赋值 
-        // class Hello extends React.Component{
-        //     render(){
-        //         return (
-        //             <div>
-        //                 <input type="text" ref="myInput"/>
-        //                 <button onClick={()=>{
-        //                     console.log(this.refs.myInput.value);
-        //                 }}>click</button>
-        //             </div>
-        //         )
-        //     }
-        // }
+        class Hello extends React.Component{
+            render(){
+                return (
+                    <div>
+                        <input type="text" ref="myInput"/>
+                        <button onClick={()=>{
+                            console.log(this.refs.myInput.value);
+                        }}>click</button>
+                    </div>
+                )
+            }
+        }
         // 2.用函数表示值
         class Hello extends React.Component{
             render(){
                 return (
                     <div>
                         <input type="text" ref={(input)=>{ // 官方推荐这种写法
+                            // 只能将对象直接暴漏出去，然后在外面再进行操作，不能再里面操作完再暴露出去
                             this.myInput = input; //形参表示这个对象 添加属性直接在button中访问值，将input给暴露出来
                         }}/>
                         <button onClick={()=>{
